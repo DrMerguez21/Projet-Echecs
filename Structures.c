@@ -23,7 +23,5 @@ struct piece {
 } ;
 typedef struct piece Piece
 
-
-
-test
-test 2
+// Tableau de pointeurs sur pièces
+// Faire les coups
