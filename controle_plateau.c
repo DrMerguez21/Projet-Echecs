@@ -17,9 +17,9 @@ Piece* ini_piece(NomPiece nom, Couleur c, int point, char symbole){
 }
 
 Piece*** ini_plateau(){
-    Piece*** plateau=malloc(8*sizeof(Piece**)); //crée les lignes du plateau
+    Piece*** plateau=malloc(8*sizeof(Piece**)); //crée les lignes du plateau représentée par les x
     for(int i=0; i<8; i++){
-        plateau[i]=malloc(8*sizeof(Piece*)); //crée les colonnes du plateau
+        plateau[i]=malloc(8*sizeof(Piece*)); //crée les colonnes du plateau représentée par les y
     }
     plateau[0][0]=ini_piece(Tour,Noir,5,'r');// pièces noires
     plateau[0][1]=ini_piece(Cavalier,Noir,3,'n');
@@ -53,15 +53,16 @@ Piece*** ini_plateau(){
 }
 
 void affiche_plateau(Piece*** plateau){
-    printf("+-+-+-+-+-+-+-+-+\n");
+    printf("   0 1 2 3 4 5 6 7\n");
+    printf("  +-+-+-+-+-+-+-+-+\n");
     for(int i=0;i<8;i++){
-        printf("|");
+        printf("%d |", i);
         for (int j=0;j<8;j++){
             if(plateau[i][j]!=NULL) printf("%c|",plateau[i][j]->Symbole);
             else printf(" |");
         }
         printf("\n");
-        printf("+-+-+-+-+-+-+-+-+\n");
+        printf("  +-+-+-+-+-+-+-+-+\n");
     }
 }
 
@@ -77,6 +78,7 @@ void free_plateau(Piece*** plateau){
 
 int main(){
     Piece*** plateau=ini_plateau();
+    printf("les pièces noires sont écrites en minuscules, les blanches en majuscule, les x correspondent aux lignes et les y aux colonnes\n");
     affiche_plateau(plateau);
     free_plateau(plateau);
 }
