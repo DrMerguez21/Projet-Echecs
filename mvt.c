@@ -3,14 +3,14 @@
 #include <time.h>
 #include "controle_plateau.h"
 
-void manger (Joueur J, Piece*** plateau, int x, int y) {
+void manger (Joueur* J, Piece*** plateau, int x, int y) {
     Piece* P = plateau[x][y] ;
     J -> Points += P -> Point ;
     plateau[x][y] = NULL ;
     free(P) ;
 }
 
-void deplacement (Joueur J, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin){
+void deplacement (Joueur* J, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin){
     if (plateau[xfin][yfin] != NULL) {
         manger (J, plateau, xfin, yfin) ;
     } plateau[xdebut][ydebut] -> CptMvt += 1 ;
@@ -47,12 +47,12 @@ int mvt_pions (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
         } printf ("Mouvement Illégal\n") ;
         return (0) ;
     } if (((plateau[xdebut][ydebut] -> C == Blanc) && (plateau[xdebut][ydebut] -> CptMvt == 0)) && ((xfin == xdebut - 2) && (ydebut == yfin))) {
-        if ((plateau[xdebut - 1][ydebut] == NULL) && (plateau[xdebut - 2][y])) { //si la case devant le pion est vide
+        if ((plateau[xdebut - 1][ydebut] == NULL) && (plateau[xdebut - 2][ydebut])) { //si la case devant le pion est vide
             return (1) ;
         } printf ("Mouvement Illégal\n") ;
         return (0) ;
     } if (((plateau[xdebut][ydebut] -> C == Noir) && (plateau[xdebut][ydebut] -> CptMvt == 0)) && ((xfin == xdebut + 2) && (ydebut == yfin))) {
-        if ((plateau[xdebut+1][ydebut] == NULL) && (plateau[xdebut + 2][y])) { //la case devant le pion est vide
+        if ((plateau[xdebut+1][ydebut] == NULL) && (plateau[xdebut + 2][ydebut])) { //la case devant le pion est vide
             return (1) ;
         } printf ("Mouvement Illégal\n") ;
         return (0) ;
@@ -189,7 +189,9 @@ int mouvement (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
     if (plateau[xdebut][ydebut] -> name == Tour) return mvt_tour(plateau, xdebut, ydebut, xfin, yfin) ;
     if (plateau[xdebut][ydebut] -> name == Fou) return mvt_fou(plateau, xdebut, ydebut, xfin, yfin) ;
     if (plateau[xdebut][ydebut] -> name == Reine) return mvt_reine(plateau, xdebut, ydebut, xfin, yfin) ;
-    if (plateau[xdebut][ydebut] -> name == Roi) return mvt_roi(plateau, xdebut, ydebut, xfin, yfin) ;
+    else {
+        return mvt_roi(plateau, xdebut, ydebut, xfin, yfin) ;
+    }
 }
 
 

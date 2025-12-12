@@ -105,7 +105,7 @@ Piece*** ini_plateau(){
     plateau[7][1]=ini_cavalier(Blanc);
     plateau[7][2]=ini_fou(Blanc);
     plateau[7][3]=ini_roi(Blanc);
-    plateau[7][4]=ini_reine(Reine);
+    plateau[7][4]=ini_reine(Blanc);
     plateau[7][5]=ini_fou(Blanc);
     plateau[7][6]=ini_cavalier(Blanc);
     plateau[7][7]=ini_tour(Blanc);
