@@ -113,6 +113,14 @@ Piece*** ini_plateau(){
     return plateau;
 }
 
+Joueur* init_joueur (Couleur c) {
+    Joueur* J = malloc(sizeof(Joueur)) ;
+    J -> C = c ;
+    J -> temps = 900 ;
+    J -> Points = 0 ;
+    return J ;
+}
+
 void affiche_plateau(Piece*** plateau){
     printf("  +---+---+---+---+---+---+---+---+\n");
     for(int i=0;i<8;i++){

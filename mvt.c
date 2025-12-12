@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "controle_plateau.h"
+#include "mvt.h"
 
 void manger (Joueur* J, Piece*** plateau, int x, int y) {
     Piece* P = plateau[x][y] ;
