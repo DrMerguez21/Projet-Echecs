@@ -10,8 +10,8 @@ Piece* ini_pion(Couleur c){
     new->C=c;
     new->Point=1;
     new->CptMvt=0;
-    if(c==Blanc) new->Symbole='P';
-    else new->Symbole ='p';
+    if(c==Blanc) new->Symbole="\u2659";
+    else new->Symbole ="\u265F";
 
     return new;
 }
@@ -22,8 +22,8 @@ Piece* ini_tour(Couleur c){
     new->C=c;
     new->Point=5;
     new->CptMvt=0;
-    if(c==Blanc) new->Symbole='R';
-    else new->Symbole ='r';
+    if(c==Blanc) new->Symbole="\u2656";
+    else new->Symbole ="\u265C";
 
     return new;
 }
@@ -34,8 +34,8 @@ Piece* ini_cavalier(Couleur c){
     new->C=c;
     new->Point=3;
     new->CptMvt=0;
-    if(c==Blanc) new->Symbole='N';
-    else new->Symbole ='n';
+    if(c==Blanc) new->Symbole="\u2658";
+    else new->Symbole ="\u265E";
 
     return new;
 }
@@ -46,8 +46,8 @@ Piece* ini_fou(Couleur c){
     new->C=c;
     new->Point=3;
     new->CptMvt=0;
-    if(c==Blanc) new->Symbole='B';
-    else new->Symbole ='b';
+    if(c==Blanc) new->Symbole="\u2657";
+    else new->Symbole ="\u265D";
 
     return new;
 }
@@ -58,8 +58,8 @@ Piece* ini_reine(Couleur c){
     new->C=c;
     new->Point=9;
     new->CptMvt=0;
-    if(c==Blanc) new->Symbole='Q';
-    else new->Symbole ='q';
+    if(c==Blanc) new->Symbole="\u2655";
+    else new->Symbole ="\u265B";
 
     return new;
 }
@@ -70,8 +70,8 @@ Piece* ini_roi(Couleur c){
     new->C=c;
     new->Point=99;
     new->CptMvt=0;
-    if(c==Blanc) new->Symbole='K';
-    else new->Symbole ='k';
+    if(c==Blanc) new->Symbole="\u2654";
+    else new->Symbole ="\u265A";
 
     return new;
 }
@@ -119,7 +119,7 @@ void affiche_plateau(Piece*** plateau){
     for(int i=0;i<8;i++){
         printf("%d |", i);
         for (int j=0;j<8;j++){
-            if(plateau[i][j]!=NULL) printf("%c|",plateau[i][j]->Symbole);
+            if(plateau[i][j]!=NULL) printf("%s|",plateau[i][j]->Symbole);
             else printf(" |");
         }
         printf("\n");
@@ -136,4 +136,3 @@ void free_plateau(Piece*** plateau){
     }
     free(plateau);
 }
-
