@@ -21,7 +21,23 @@ typedef struct piece {
     char Symbole ;
 } Piece;
 
-Piece* ini_piece(NomPiece nom, Couleur c, int point, char symbole);
+typedef struct joueur {
+    Couleur C;
+    int Points;
+    int temps;
+} Joueur;
+
+Piece* ini_pion(Couleur c);
+
+Piece* ini_tour(Couleur c);
+
+Piece* ini_cavalier(Couleur c);
+
+Piece* ini_fou(Couleur c);
+
+Piece* ini_reine(Couleur c);
+
+Piece* ini_roi(Couleur c);
 
 Piece*** ini_plateau();
 
