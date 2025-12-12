@@ -114,16 +114,16 @@ Piece*** ini_plateau(){
 }
 
 void affiche_plateau(Piece*** plateau){
-    printf("   0 1 2 3 4 5 6 7\n");
-    printf("  +-+-+-+-+-+-+-+-+\n");
+    printf("    0   1   2   3   4   5   6   7\n");
+    printf("  +---+---+---+---+---+---+---+---+\n");
     for(int i=0;i<8;i++){
         printf("%d |", i);
         for (int j=0;j<8;j++){
-            if(plateau[i][j]!=NULL) printf("%s|",plateau[i][j]->Symbole);
-            else printf(" |");
+            if(plateau[i][j]!=NULL) printf(" %s |",plateau[i][j]->Symbole);
+            else printf("   |");
         }
         printf("\n");
-        printf("  +-+-+-+-+-+-+-+-+\n");
+        printf("  +---+---+---+---+---+---+---+---+\n");
     }
 }
 
