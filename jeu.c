@@ -7,7 +7,7 @@
 int main(){
     //ajouter ici la recharge de sauvegarde
     Piece*** plateau=ini_plateau();
-    printf("les pièces noires sont écrites en minuscules, les blanches en majuscules, les x correspondent aux lignes et les y aux colonnes\n");
+    printf("les pièces noires sont écrites en haut, les blanches en bas (les couleurs semblent inversées si on est en affichage sombre), les x correspondent aux lignes et les y aux colonnes\n");
 
     while(!fini(Piece*** plateau)){ //fonction fini pas encore faite, renvoie 1 si un roi a été dévoré
         int xdebut, ydebut, xfin, yfin;
