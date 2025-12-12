@@ -45,4 +45,8 @@ void affiche_plateau(Piece*** plateau);
 
 void free_plateau(Piece*** plateau);
 
+int convert_x(int xdebut);
+
+int convert_y(char ydebut);
+
 #endif

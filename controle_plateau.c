@@ -114,10 +114,9 @@ Piece*** ini_plateau(){
 }
 
 void affiche_plateau(Piece*** plateau){
-    printf("    0   1   2   3   4   5   6   7\n");
     printf("  +---+---+---+---+---+---+---+---+\n");
     for(int i=0;i<8;i++){
-        printf("%d |", i);
+        printf("%d |", 8-i);
         for (int j=0;j<8;j++){
             if(plateau[i][j]!=NULL) printf(" %s |",plateau[i][j]->Symbole);
             else printf("   |");
@@ -125,6 +124,7 @@ void affiche_plateau(Piece*** plateau){
         printf("\n");
         printf("  +---+---+---+---+---+---+---+---+\n");
     }
+    printf("    a   b   c   d   e   f   g   h\n");
 }
 
 void free_plateau(Piece*** plateau){
@@ -135,4 +135,28 @@ void free_plateau(Piece*** plateau){
         free(plateau[i]);
     }
     free(plateau);
+}
+
+int convert_x(int xdebut){
+    switch(xdebut){
+        case 1: return 7;
+        case 2: return 6;
+        case 3: return 5;
+        case 4: return 4;
+        case 5: return 3;
+        case 6: return 2;
+        case 7: return 1;
+    }return 0;
+}
+
+int convert_y(char ydebut){
+    switch(ydebut){
+        case 'a': return 0;
+        case 'b': return 1;
+        case 'c': return 2;
+        case 'd': return 3;
+        case 'e': return 4;
+        case 'f': return 5;
+        case 'g': return 6;
+    }return 7;
 }
