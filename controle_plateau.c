@@ -137,10 +137,3 @@ void free_plateau(Piece*** plateau){
     free(plateau);
 }
 
-int main(){
-    Piece*** plateau=ini_plateau();
-    printf("les pièces noires sont écrites en minuscules, les blanches en majuscules, les x correspondent aux lignes et les y aux colonnes\n");
-    affiche_plateau(plateau);
-    affiche_plateau(plateau);
-    free_plateau(plateau);
-}
