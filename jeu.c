@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "controle_plateau.h"
-//#include "mouv.h"
+#include "mvt.h"
 
 int main(){
     //ajouter ici la recharge de sauvegarde
