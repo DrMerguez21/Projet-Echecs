@@ -27,6 +27,8 @@ typedef struct joueur {
     int temps;
 } Joueur;
 
+Joueur* init_joueur (Couleur c);
+
 Piece* ini_pion(Couleur c);
 
 Piece* ini_tour(Couleur c);
