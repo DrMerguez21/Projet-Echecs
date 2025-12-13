@@ -9,6 +9,7 @@
 control
 controle_plateau
 prog
+jeu
 
 mouv.c
 Structures.h
