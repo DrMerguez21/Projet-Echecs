@@ -11,15 +11,14 @@ int main(){
     Joueur* J1 = init_joueur (Blanc) ;
     Joueur* J2 = init_joueur (Noir) ;
     printf("les pièces noires sont en haut, les blanches en bas (les couleurs semblent inversées si on est en affichage sombre), les x correspondent aux lignes et les y aux colonnes\n");
-
-    while(!fini(J1, J2)){
+    affiche_plateau(plateau);
+    while(fini(J1, J2)==0){
         char yd, yf;
         int xd, xf;
         int xdebut, ydebut, xfin, yfin;
         double p ;
         clock_t start, end ;
 
-        affiche_plateau(plateau);
         printf("Au tour des blancs\n");
         start = clock () ;
         //debut du décompte pour le joueur blanc
@@ -41,9 +40,10 @@ int main(){
         end = clock () ;
         p = (double) (end - start) / CLOCKS_PER_SEC ;
         J1 -> temps -= p ;
-        printf ("Il vous reste %lf secondes\n", J1 -> temps) ;
+        printf ("Il vous reste %d secondes\n", J1 -> temps) ;
         affiche_plateau(plateau);
         if (fini(J1, J2) != 0) break ;
+
         printf("Au tour des noirs\n");
         start = clock () ;
         //debut du décompte pour le joueur noir
@@ -65,7 +65,7 @@ int main(){
         end = clock () ;
         p = (double) (end - start) / CLOCKS_PER_SEC ;
         J2 -> temps -= p ;
-        printf ("Il vous reste %lf secondes\n", J2 -> temps) ;
+        printf ("Il vous reste %d secondes\n", J2 -> temps) ;
         affiche_plateau(plateau);
     }
 
