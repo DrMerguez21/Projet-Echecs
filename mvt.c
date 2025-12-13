@@ -194,15 +194,3 @@ int mouvement (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
         return mvt_roi(plateau, xdebut, ydebut, xfin, yfin) ;
     }
 }
-
-
-int main(){
-    Piece*** plateau=ini_plateau();
-    printf("les pièces noires sont écrites en minuscules, les blanches en majuscules, les x correspondent aux lignes et les y aux colonnes\n");
-    affiche_plateau(plateau);
-    mouvement(plateau, 0,1, 2,2);
-    mouvement(plateau, 2,2 ,4,3);
-    mouvement(plateau, 4,3 ,6,4);
-    affiche_plateau(plateau);
-    free_plateau(plateau);
-}
