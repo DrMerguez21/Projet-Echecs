@@ -1,5 +1,5 @@
-#ifndef MVT_H
-#define MVT_H
+#ifndef FINI_H
+#define FINI_H
 
 int fini (Joueur* J1, Joueur* J2);
 
