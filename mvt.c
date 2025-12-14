@@ -150,7 +150,7 @@ int mvt_fou (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
         }
     } else {
         printf ("Mouvement Illégal\n") ;
-        compteur = 1 ;
+        return (0); ;
     } if (compteur == 0) {
         return (1) ;
     } printf ("Une pièce bloque le chemin\n") ;
