@@ -165,11 +165,10 @@ int mvt_reine (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
 }
     //mouv du roi 
 int mvt_roi (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
-    if ((xdebut - xfin <= 1) || (xdebut - xfin >= -1)) {
-        if ((ydebut - yfin <= 1) || (ydebut - yfin >= -1)) {
+    if (abs(xdebut - xfin <= 1) && abs(ydebut - yfin <= 1)) {
             return (1) ;
         } //Faire le Roque autour de là
-    } printf ("Mouvement Illégal\n") ;
+    printf ("Mouvement Illégal\n") ;
     return (0) ;
 }
 
