@@ -48,12 +48,12 @@ int mvt_pions (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
         } printf ("Mouvement Illégal\n") ;
         return (0) ;
     } if (((plateau[xdebut][ydebut] -> C == Blanc) && (plateau[xdebut][ydebut] -> CptMvt == 0)) && ((xfin == xdebut - 2) && (ydebut == yfin))) {
-        if ((plateau[xdebut - 1][ydebut] == NULL) && (plateau[xdebut - 2][ydebut])) { //si la case devant le pion est vide
+        if ((plateau[xdebut - 1][ydebut] == NULL) && (plateau[xdebut - 2][ydebut]==NULL)) { //si la case devant le pion est vide
             return (1) ;
         } printf ("Mouvement Illégal\n") ;
         return (0) ;
     } if (((plateau[xdebut][ydebut] -> C == Noir) && (plateau[xdebut][ydebut] -> CptMvt == 0)) && ((xfin == xdebut + 2) && (ydebut == yfin))) {
-        if ((plateau[xdebut+1][ydebut] == NULL) && (plateau[xdebut + 2][ydebut])) { //la case devant le pion est vide
+        if ((plateau[xdebut+1][ydebut] == NULL) && (plateau[xdebut + 2][ydebut]==NULL)) { //la case devant le pion est vide
             return (1) ;
         } printf ("Mouvement Illégal\n") ;
         return (0) ;
