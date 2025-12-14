@@ -88,7 +88,7 @@ int mvt_tour (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
             } 
         } else {
             if (ydebut - yfin >= 2) {
-                for (int i = ydebut + 1 ; i < yfin ; i--) {
+                for (int i = ydebut - 1 ; i > yfin ; i--) {
                     if (plateau[xdebut][i] != NULL) compteur += 1 ;
                 }
             }
@@ -102,14 +102,14 @@ int mvt_tour (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
             } 
         } else {
             if (xdebut - xfin >= 2) {
-                for (int i = xdebut + 1 ; i < xfin ; i--) {
+                for (int i = xdebut - 1 ; i > xfin ; i--) {
                     if (plateau[i][ydebut] != NULL) compteur += 1 ;
                 }
             }
         }
     } else {
         printf ("Mouvement Illégal\n") ;
-        compteur = 1 ;
+        return (0) ;
     } if (compteur == 0) {
         return (1) ;
     } printf ("Une pièce bloque le chemin\n") ;
