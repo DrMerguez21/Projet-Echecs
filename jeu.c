@@ -69,6 +69,6 @@ int main(){
         affiche_plateau(plateau);
     }
 
-    if (fini(J1, J2) == 1) printf ("Le Joueur 1 a gagné") ;
-    if (fini(J1, J2) == 2) printf ("Le Joueur 2 a gagné") ;
+    if (fini(J1, J2) == 1) printf ("Le Joueur 1 a gagné\n") ;
+    if (fini(J1, J2) == 2) printf ("Le Joueur 2 a gagné\n") ;
 }
