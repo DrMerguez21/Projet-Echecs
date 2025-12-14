@@ -23,14 +23,14 @@ int main(){
         start = clock () ;
         //debut du décompte pour le joueur blanc
         printf("Entrez les coordonnées de la pièce que vous voulez déplacer, puis celles de la case où vous voulez aller, séparé à chaque fois par un espace\n");
-        scanf("%c %d %c %d",&yd, &xd, &yf, &xf);
+        scanf(" %c %d %c %d",&yd, &xd, &yf, &xf);
         xdebut=convert_x(xd);
         ydebut=convert_y(yd);
         xfin=convert_x(xf);
         yfin=convert_y(yf);
         while(!mouvement(plateau, xdebut, ydebut, xfin, yfin)){
             printf("Entrez les coordonnées de la pièce que vous voulez déplacer, puis celles de la case où vous voulez aller, séparé à chaque fois par un espace\n");
-            scanf("%c %d %c %d",&yd, &xd, &yf, &xf);
+            scanf(" %c %d %c %d",&yd, &xd, &yf, &xf);
             xdebut=convert_x(xd);
             ydebut=convert_y(yd);
             xfin=convert_x(xf);
@@ -48,14 +48,14 @@ int main(){
         start = clock () ;
         //debut du décompte pour le joueur noir
         printf("Entrez les coordonnées de la pièce que vous voulez déplacer, puis celles de la case où vous voulez aller, séparé à chaque fois par un espace\n");
-        scanf("%c %d %c %d",&yd, &xd, &yf, &xf);
+        scanf(" %c %d %c %d",&yd, &xd, &yf, &xf);
         xdebut=convert_x(xd);
         ydebut=convert_y(yd);
         xfin=convert_x(xf);
         yfin=convert_y(yf);
         while(!mouvement(plateau, xdebut, ydebut, xfin, yfin)){
             printf("Entrez les coordonnées de la pièce que vous voulez déplacer, puis celles de la case où vous voulez aller, séparé à chaque fois par un espace\n");
-            scanf("%c %d %c %d",&yd, &xd, &yf, &xf);
+            scanf(" %c %d %c %d",&yd, &xd, &yf, &xf);
             xdebut=convert_x(xd);
             ydebut=convert_y(yd);
             xfin=convert_x(xf);
