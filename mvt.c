@@ -158,12 +158,10 @@ int mvt_fou (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
 }
     //mouv de la reine
 int mvt_reine (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
-    int i = mvt_tour (plateau, xdebut, ydebut, xfin, yfin) ;
-    if (i == 0) {
-        i = mvt_fou (plateau, xdebut, ydebut, xfin, yfin) ;
-    } if (i == 0) {
-        printf ("Mouvement Illégal\n") ;
-    } return (i) ;  
+    if( mvt_tour (plateau, xdebut, ydebut, xfin, yfin)) return 1;
+    if( mvt_fou (plateau, xdebut, ydebut, xfin, yfin)) return 1 ;
+    printf ("Mouvement Illégal\n") ;
+    return (0) ;  
 }
     //mouv du roi 
 int mvt_roi (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
