@@ -165,19 +165,36 @@ int mvt_reine (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
     return (0) ;  
 }
 
-int roque(Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin){
-
+int petit_roque(Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin){
+    if((plateau[xdebut][ydebut]->CptMvt!=0)||(plateau[xdebut][yfin+1]->CptMvt!=0) return 0; //roque impossible si le roi  ou la tour a déjà bougé
+    for(int i=ydebut; i<=yfin; i++){
+        if(check(plateau,xdebut, i)){ // si le roi est en échec ou que les cases sur lesquelles il va se déplacer sont attaqué, le roque est impossible
+            return 0;
+        }
+    }
+    return mvt_tour(plateau,xdebut, 7, xdebut, 5); //si le mouvement de la tour est impossible, car il y a des pièces sur le chemin, le roque ne l'est pas non plus   
 }
+
+int grand_roque(Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin){
+    if((plateau[xdebut][ydebut]->CptMvt!=0)||(plateau[xdebut][0]->CptMvt!=0) return 0; //roque impossible si le roi  ou la tour a déjà bougé
+    for(int i=yfin; i<=ydebut; i++){
+        if(check(plateau,xdebut, i)){ // si le roi est en échec ou que les cases sur lesquelles il va se déplacer sont attaqué, le roque est impossible
+            return 0;
+        }
+    }
+    return mvt_tour(plateau,xdebut, 0, xdebut, 3); //si le mouvement de la tour est impossible, car il y a des pièces sur le chemin, le roque ne l'est pas non plus   
+}
+
     //mouv du roi 
 int mvt_roi (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
     if ((abs(xdebut - xfin) <= 1) && abs(ydebut - yfin) <= 1) {
             return (1) ;
     } //Faire le Roque autour de là
-    if ((yfin==ydebut+2)&&(xfin==xdebut)&& mvt_tour(plateau,xdebut, 7, xdebut, 5)){ //petit roque
-        return (1);
+    if ((yfin==ydebut+2)&&(xfin==xdebut)&& petit_roque(plateau, xdebut, ydebut, xfin, yfin)){ //petit roque
+        return (2); //nécessaire pour ensuite indiquer au jeu qu'il faut aussi bouger la tour de droite
     }
-    if ((yfin==ydebut-2)&&(xfin==xdebut) && mvt_tour(plateau, xdebut, 0, xdebut, 3)){
-        return (1);
+    if ((yfin==ydebut-2)&&(xfin==xdebut) && grand_roque(plateau, xdebut, ydebut, xdebut, yfin)){
+        return (3);
     }
     printf ("Mouvement Illégal\n") ;
     return (0) ;

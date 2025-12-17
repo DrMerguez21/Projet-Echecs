@@ -15,6 +15,10 @@ int mvt_fou (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);
 
 int mvt_reine (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);
 
+int petit_roque(Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);
+
+int grand_roque(Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);
+
 int mvt_roi (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);
 
 int mouvement (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);

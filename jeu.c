@@ -28,14 +28,21 @@ int main(){
         ydebut=convert_y(yd);
         xfin=convert_x(xf);
         yfin=convert_y(yf);
-        while(!mouvement(plateau, xdebut, ydebut, xfin, yfin)){
+        while(mouvement(plateau, xdebut, ydebut, xfin, yfin)==0){
             printf("Entrez les coordonnées de la pièce que vous voulez déplacer, puis celles de la case où vous voulez aller, séparé à chaque fois par un espace\n");
             scanf(" %c %d %c %d",&yd, &xd, &yf, &xf);
             xdebut=convert_x(xd);
             ydebut=convert_y(yd);
             xfin=convert_x(xf);
             yfin=convert_y(yf);
-        } deplacement (J1, plateau, xdebut, ydebut, xfin, yfin) ;
+        } int mouv_spe=mouvement(plateau, xdebut, ydebut, xfin, yfin);
+        if(mouv_spe==2){ //petit roque
+            deplacement(J1, plateau, xdebut, 7, xfin, 5); //deplacement de la tour de droite    
+        }
+        if (mouv_spe==3){ //grand roque
+            deplacement(J1, plateau, xdebut, 0, xfin, 3); //deplacement de la tour de gauche
+        }
+        deplacement (J1, plateau, xdebut, ydebut, xfin, yfin) ;
         //fin du décompte pour le joueur blanc
         end = clock () ;
         p = (double) (end - start) / CLOCKS_PER_SEC ;
@@ -53,14 +60,21 @@ int main(){
         ydebut=convert_y(yd);
         xfin=convert_x(xf);
         yfin=convert_y(yf);
-        while(!mouvement(plateau, xdebut, ydebut, xfin, yfin)){
+        while(mouvement(plateau, xdebut, ydebut, xfin, yfin)==0){
             printf("Entrez les coordonnées de la pièce que vous voulez déplacer, puis celles de la case où vous voulez aller, séparé à chaque fois par un espace\n");
             scanf(" %c %d %c %d",&yd, &xd, &yf, &xf);
             xdebut=convert_x(xd);
             ydebut=convert_y(yd);
             xfin=convert_x(xf);
             yfin=convert_y(yf);
-        } deplacement (J2, plateau, xdebut, ydebut, xfin, yfin) ;
+        } mouv_spe=mouvement(plateau, xdebut, ydebut, xfin, yfin);
+        if(mouv_spe==2){ //petit roque
+            deplacement(J2, plateau, xdebut, 7, xfin, 5); //deplacement de la tour de droite    
+        }
+        if (mouv_spe==3){ //grand roque
+            deplacement(J2, plateau, xdebut, 0, xfin, 3); //deplacement de la tour de gauche
+        } 
+        deplacement (J2, plateau, xdebut, ydebut, xfin, yfin) ;
         //fin du décompte pour le joueur noir
         end = clock () ;
         p = (double) (end - start) / CLOCKS_PER_SEC ;
