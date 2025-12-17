@@ -37,10 +37,10 @@ int main(){
             yfin=convert_y(yf);
         } int mouv_spe=mouvement(plateau, xdebut, ydebut, xfin, yfin);
         if(mouv_spe==2){ //petit roque
-            deplacement(J1, plateau, xdebut, 7, xfin, 5); //deplacement de la tour de droite    
+            deplacement(J1, plateau, xdebut, 7, xdebut, 5); //deplacement de la tour de droite    
         }
         if (mouv_spe==3){ //grand roque
-            deplacement(J1, plateau, xdebut, 0, xfin, 3); //deplacement de la tour de gauche
+            deplacement(J1, plateau, xdebut, 0, xdebut, 3); //deplacement de la tour de gauche
         }
         deplacement (J1, plateau, xdebut, ydebut, xfin, yfin) ;
         //fin du décompte pour le joueur blanc
@@ -69,10 +69,10 @@ int main(){
             yfin=convert_y(yf);
         } mouv_spe=mouvement(plateau, xdebut, ydebut, xfin, yfin);
         if(mouv_spe==2){ //petit roque
-            deplacement(J2, plateau, xdebut, 7, xfin, 5); //deplacement de la tour de droite    
+            deplacement(J2, plateau, xdebut, 7, xdebut, 5); //deplacement de la tour de droite    
         }
         if (mouv_spe==3){ //grand roque
-            deplacement(J2, plateau, xdebut, 0, xfin, 3); //deplacement de la tour de gauche
+            deplacement(J2, plateau, xdebut, 0, xdebut, 3); //deplacement de la tour de gauche
         } 
         deplacement (J2, plateau, xdebut, ydebut, xfin, yfin) ;
         //fin du décompte pour le joueur noir
