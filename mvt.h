@@ -5,23 +5,23 @@ void manger (Joueur* J, Piece*** plateau, int x, int y);
 
 void deplacement (Joueur* J, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);
 
-int mvt_pions (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);
+int mvt_pions (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);
 
-int mvt_cava (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);
+int mvt_cava (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);
 
-int mvt_tour (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);
+int mvt_tour (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);
 
-int mvt_fou (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);
+int mvt_fou (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);
 
-int mvt_reine (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);
+int mvt_reine (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);
 
-int petit_roque(Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);
+int petit_roque(int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);
 
-int grand_roque(Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);
+int grand_roque(int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);
 
-int mvt_roi (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);
+int mvt_roi (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);
 
-int mouvement (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);
+int mouvement (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);
 
 
 #endif

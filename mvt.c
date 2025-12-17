@@ -21,64 +21,64 @@ void deplacement (Joueur* J, Piece*** plateau, int xdebut, int ydebut, int xfin,
 }
 
     //Mouvement Pions
-int mvt_pions (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
+int mvt_pions (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
     if ((plateau[xdebut][ydebut] -> C == Blanc) && (xfin == xdebut - 1)) {
         if (ydebut != yfin) {
             if ((yfin == ydebut + 1) || (yfin == ydebut - 1)) { //mouv en diago pour manger
                 if ((plateau[xfin][yfin] != NULL) && (plateau[xfin][yfin] -> C == Noir)){
                     return (1) ;
-                } printf ("Mouvement Illégal\n") ;
+                } if (affiche_erreur) printf ("Mouvement Illégal\n") ;
                 return (0) ;
-            } printf ("Mouvement Illégal\n") ;
+            } if(affiche_erreur) printf ("Mouvement Illégal\n") ;
             return (0) ;
         } if (plateau[xfin][yfin] == NULL) {
             return (1) ;
-        } printf ("Mouvement Illégal\n") ;
+        } if(affiche_erreur) printf ("Mouvement Illégal\n") ;
         return (0) ;
     } if ((plateau[xdebut][ydebut] -> C == Noir) && (xfin == xdebut + 1)) {
         if (ydebut != yfin) {
             if ((yfin == ydebut + 1) || (yfin == ydebut - 1)) {
                 if ((plateau[xfin][yfin] != NULL) && (plateau[xfin][yfin] -> C == Blanc)){
                     return (1) ;
-                } printf ("Mouvement Illégal\n") ;
+                } if(affiche_erreur) printf ("Mouvement Illégal\n") ;
                 return (0) ;
-            } printf ("Mouvement Illégal\n") ;
+            } if(affiche_erreur) printf ("Mouvement Illégal\n") ;
             return (0) ;
         } if (plateau[xfin][yfin] == NULL) {
             return (1) ;
-        } printf ("Mouvement Illégal\n") ;
+        } if(affiche_erreur) printf ("Mouvement Illégal\n") ;
         return (0) ;
     } if (((plateau[xdebut][ydebut] -> C == Blanc) && (plateau[xdebut][ydebut] -> CptMvt == 0)) && ((xfin == xdebut - 2) && (ydebut == yfin))) {
         if ((plateau[xdebut - 1][ydebut] == NULL) && (plateau[xdebut - 2][ydebut]==NULL)) { //si la case devant le pion est vide
             return (1) ;
-        } printf ("Mouvement Illégal\n") ;
+        } if(affiche_erreur) printf ("Mouvement Illégal\n") ;
         return (0) ;
     } if (((plateau[xdebut][ydebut] -> C == Noir) && (plateau[xdebut][ydebut] -> CptMvt == 0)) && ((xfin == xdebut + 2) && (ydebut == yfin))) {
         if ((plateau[xdebut+1][ydebut] == NULL) && (plateau[xdebut + 2][ydebut]==NULL)) { //la case devant le pion est vide
             return (1) ;
-        } printf ("Mouvement Illégal\n") ;
+        } if(affiche_erreur) printf ("Mouvement Illégal\n") ;
         return (0) ;
-    } printf ("Mouvement Illégal\n") ;
+    } if(affiche_erreur) printf ("Mouvement Illégal\n") ;
     return (0) ;
 }
 
     //Mouvement Cavalier
-int mvt_cava (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
+int mvt_cava (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
     if ((xfin == xdebut + 2) || (xfin == xdebut - 2)) { 
         if ((yfin == ydebut + 1) || (yfin == ydebut - 1)) {
             return (1) ;
-        } printf ("Mouvement Illégal\n") ;
+        } if(affiche_erreur) printf ("Mouvement Illégal\n") ;
         return (0) ;
     } if ((xfin == xdebut + 1) || (xfin == xdebut - 1)) {
         if ((yfin == ydebut + 2) || (yfin == ydebut - 2)) {
             return (1) ;
-        } printf ("Mouvement Illégal\n") ;
+        } if(affiche_erreur) printf ("Mouvement Illégal\n") ;
         return (0) ;
-    } printf ("Mouvement Illégal\n") ;
+    } if(affiche_erreur) printf ("Mouvement Illégal\n") ;
     return (0) ;
 }
     //Mouvement Tour
-int mvt_tour (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
+int mvt_tour (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
     int compteur = 0 ;
     if (xdebut == xfin) {
         if (ydebut < yfin) {
@@ -109,16 +109,16 @@ int mvt_tour (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
             }
         }
     } else {
-        printf ("Mouvement Illégal\n") ;
+        if(affiche_erreur) printf ("Mouvement Illégal\n") ;
         return (0) ;
     } if (compteur == 0) {
         return (1) ;
-    } printf ("Une pièce bloque le chemin\n") ;
+    } if(affiche_erreur) printf ("Une pièce bloque le chemin\n") ;
     return (0) ;
 }
 
     //Mouvement Fou
-int mvt_fou (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
+int mvt_fou (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
     int compteur = 0 ;
     if (xdebut - xfin == ydebut - yfin) {
         if (xdebut < xfin) {
@@ -150,42 +150,42 @@ int mvt_fou (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
             }
         }
     } else {
-        printf ("Mouvement Illégal\n") ;
+        if(affiche_erreur) printf ("Mouvement Illégal\n") ;
         return (0); ;
     } if (compteur == 0) {
         return (1) ;
-    } printf ("Une pièce bloque le chemin\n") ;
+    } if(affiche_erreur) printf ("Une pièce bloque le chemin\n") ;
     return (0) ;
 }
     //mouv de la reine
-int mvt_reine (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
-    if((xdebut == xfin) || (ydebut == yfin) ) return mvt_tour (plateau, xdebut, ydebut, xfin, yfin);
-    if(abs(xfin - xdebut) == abs(yfin - ydebut) ) return mvt_fou (plateau, xdebut, ydebut, xfin, yfin) ;
-    printf ("Mouvement Illégal\n") ;
+int mvt_reine (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
+    if((xdebut == xfin) || (ydebut == yfin) ) return mvt_tour (affiche_erreur, plateau, xdebut, ydebut, xfin, yfin);
+    if(abs(xfin - xdebut) == abs(yfin - ydebut) ) return mvt_fou (affiche_erreur, plateau, xdebut, ydebut, xfin, yfin) ;
+    if(affiche_erreur) printf ("Mouvement Illégal\n") ;
     return (0) ;  
 }
 
-int petit_roque(Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin){
+int petit_roque(int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin){
     if((plateau[xdebut][7]==NULL)||(plateau[xdebut][7]->name!=Tour)) return 0;
     if((plateau[xdebut][ydebut]->CptMvt!=0)||(plateau[xdebut][7]->CptMvt!=0)) return 0; //roque impossible si le roi  ou la tour a déjà bougé
     if(check(plateau,xdebut, ydebut))return 0; // si le roi est en échec ou que les cases sur lesquelles il va se déplacer sont attaqué, le roque est impossible
-    return mvt_tour(plateau,xdebut, 7, xdebut, 5); //si le mouvement de la tour est impossible, car il y a des pièces sur le chemin, le roque ne l'est pas non plus   
+    return mvt_tour(affiche_erreur, plateau,xdebut, 7, xdebut, 5); //si le mouvement de la tour est impossible, car il y a des pièces sur le chemin, le roque ne l'est pas non plus   
 }
 
-int grand_roque(Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin){
+int grand_roque(int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin){
     if((plateau[xdebut][0]==NULL) || (plateau[xdebut][0]->name!=Tour)) return 0;
     if((plateau[xdebut][ydebut]->CptMvt!=0)||(plateau[xdebut][0]->CptMvt!=0)) return 0; //roque impossible si le roi  ou la tour a déjà bougé
     if(check(plateau,xdebut, ydebut))return 0; // si le roi est en échec ou que les cases sur lesquelles il va se déplacer sont attaqué, le roque est impossible
-    return mvt_tour(plateau,xdebut, 0, xdebut, 3); //si le mouvement de la tour est impossible, car il y a des pièces sur le chemin, le roque ne l'est pas non plus   
+    return mvt_tour(affiche_erreur, plateau,xdebut, 0, xdebut, 3); //si le mouvement de la tour est impossible, car il y a des pièces sur le chemin, le roque ne l'est pas non plus   
 }
 
     //mouv du roi 
-int mvt_roi (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
+int mvt_roi (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
     //Faire le Roque autour de là
-    if ((yfin==ydebut+2)&&(xfin==xdebut)&& petit_roque(plateau, xdebut, ydebut, xfin, yfin)){ //petit roque
+    if ((yfin==ydebut+2)&&(xfin==xdebut)&& petit_roque(affiche_erreur, plateau, xdebut, ydebut, xfin, yfin)){ //petit roque
         return (2); //nécessaire pour ensuite indiquer au jeu qu'il faut aussi bouger la tour de droite
     }
-    if ((yfin==ydebut-2)&&(xfin==xdebut) && grand_roque(plateau, xdebut, ydebut, xdebut, yfin)){
+    if ((yfin==ydebut-2)&&(xfin==xdebut) && grand_roque(affiche_erreur, plateau, xdebut, ydebut, xdebut, yfin)){
         return (3);
     }
     if ((abs(xdebut - xfin) <= 1) && abs(ydebut - yfin) <= 1) {
@@ -195,22 +195,22 @@ int mvt_roi (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
     return (0) ;
 }
 
-int mouvement (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
+int mouvement (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
     if ((xdebut == xfin) && (ydebut == yfin)) {
-        printf ("Aucun Déplacement effectué\n") ;
+        if(affiche_erreur) printf ("Aucun Déplacement effectué\n") ;
         return (0) ;
     } if (plateau[xdebut][ydebut] == NULL) {
-        printf ("Aucune Pièce Sélectionnée\n") ;
+        if(affiche_erreur) printf ("Aucune Pièce Sélectionnée\n") ;
         return (0) ;
     } if ((plateau[xfin][yfin] != NULL) && (plateau[xfin][yfin] -> C == plateau[xdebut][ydebut] -> C)) {
-        printf ("Case de fin est une pièce appartenant déjà au joueur\n") ;
+        if(affiche_erreur) printf ("Case de fin est une pièce appartenant déjà au joueur\n") ;
         return (0) ;
-    } if (plateau[xdebut][ydebut] -> name == Pion) return mvt_pions(plateau, xdebut, ydebut, xfin, yfin) ;
-    if (plateau[xdebut][ydebut] -> name == Cavalier) return mvt_cava(plateau, xdebut, ydebut, xfin, yfin) ;
-    if (plateau[xdebut][ydebut] -> name == Tour) return mvt_tour(plateau, xdebut, ydebut, xfin, yfin) ;
-    if (plateau[xdebut][ydebut] -> name == Fou) return mvt_fou(plateau, xdebut, ydebut, xfin, yfin) ;
-    if (plateau[xdebut][ydebut] -> name == Reine) return mvt_reine(plateau, xdebut, ydebut, xfin, yfin) ;
+    } if (plateau[xdebut][ydebut] -> name == Pion) return mvt_pions(affiche_erreur, plateau, xdebut, ydebut, xfin, yfin) ;
+    if (plateau[xdebut][ydebut] -> name == Cavalier) return mvt_cava(affiche_erreur, plateau, xdebut, ydebut, xfin, yfin) ;
+    if (plateau[xdebut][ydebut] -> name == Tour) return mvt_tour(affiche_erreur, plateau, xdebut, ydebut, xfin, yfin) ;
+    if (plateau[xdebut][ydebut] -> name == Fou) return mvt_fou(affiche_erreur, plateau, xdebut, ydebut, xfin, yfin) ;
+    if (plateau[xdebut][ydebut] -> name == Reine) return mvt_reine(affiche_erreur, plateau, xdebut, ydebut, xfin, yfin) ;
     else {
-        return mvt_roi(plateau, xdebut, ydebut, xfin, yfin) ;
+        return mvt_roi(affiche_erreur, plateau, xdebut, ydebut, xfin, yfin) ;
     }
 }
