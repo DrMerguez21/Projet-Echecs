@@ -85,8 +85,8 @@ Piece*** ini_plateau(){
     plateau[0][0]=ini_tour(Noir);// pièces noires
     plateau[0][1]=ini_cavalier(Noir);
     plateau[0][2]=ini_fou(Noir);
-    plateau[0][3]=ini_roi(Noir);
-    plateau[0][4]=ini_reine(Noir);
+    plateau[0][3]=ini_reine(Noir);
+    plateau[0][4]=ini_roi(Noir);
     plateau[0][5]=ini_fou(Noir);
     plateau[0][6]=ini_cavalier(Noir);
     plateau[0][7]=ini_tour(Noir);
@@ -104,8 +104,8 @@ Piece*** ini_plateau(){
     plateau[7][0]=ini_tour(Blanc);
     plateau[7][1]=ini_cavalier(Blanc);
     plateau[7][2]=ini_fou(Blanc);
-    plateau[7][3]=ini_roi(Blanc);
-    plateau[7][4]=ini_reine(Blanc);
+    plateau[7][3]=ini_reine(Blanc);
+    plateau[7][4]=ini_roi(Blanc);
     plateau[7][5]=ini_fou(Blanc);
     plateau[7][6]=ini_cavalier(Blanc);
     plateau[7][7]=ini_tour(Blanc);
