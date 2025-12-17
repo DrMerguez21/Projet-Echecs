@@ -3,6 +3,7 @@
 #include <time.h>
 #include "controle_plateau.h"
 #include "mvt.h"
+#include "fini.h"
 
 void manger (Joueur* J, Piece*** plateau, int x, int y) {
     Piece* P = plateau[x][y] ;
@@ -163,11 +164,21 @@ int mvt_reine (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
     printf ("Mouvement Illégal\n") ;
     return (0) ;  
 }
+
+int roque(Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin){
+
+}
     //mouv du roi 
 int mvt_roi (Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
-    if (abs(xdebut - xfin <= 1) && abs(ydebut - yfin <= 1)) {
+    if ((abs(xdebut - xfin) <= 1) && abs(ydebut - yfin) <= 1) {
             return (1) ;
-        } //Faire le Roque autour de là
+    } //Faire le Roque autour de là
+    if ((yfin==ydebut+2)&&(xfin==xdebut)&& mvt_tour(plateau,xdebut, 7, xdebut, 5)){ //petit roque
+        return (1);
+    }
+    if ((yfin==ydebut-2)&&(xfin==xdebut) && mvt_tour(plateau, xdebut, 0, xdebut, 3)){
+        return (1);
+    }
     printf ("Mouvement Illégal\n") ;
     return (0) ;
 }

@@ -3,4 +3,5 @@
 
 int fini (Joueur* J1, Joueur* J2);
 
+int check (Piece*** plateau, int xroi, int yroi);
 #endif
