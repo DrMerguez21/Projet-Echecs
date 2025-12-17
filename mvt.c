@@ -191,7 +191,7 @@ int mvt_roi (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int x
     if ((abs(xdebut - xfin) <= 1) && abs(ydebut - yfin) <= 1) {
             return (1) ;
     } 
-    printf ("Mouvement Illégal\n") ;
+    if(affiche_erreur) printf ("Mouvement Illégal\n") ;
     return (0) ;
 }
 
