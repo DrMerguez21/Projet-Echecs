@@ -29,7 +29,7 @@ void save(const char* nom_fichier, Piece*** plateau, Joueur* J1, Joueur* J2, Cou
     printf("Sauvegarde réussie");
 }
 
-void reload(constant char* nom_fichier, Piece*** plateau, Joueur* J1, Joueur* J2, Couleur* actuel){
+void reload(const char* nom_fichier, Piece*** plateau, Joueur* J1, Joueur* J2, Couleur* actuel){
     File f*=fopen(nom_fichier, "r");
     if(f==NULL){
         perror("Erreur de chargement");
