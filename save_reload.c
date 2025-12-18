@@ -44,9 +44,12 @@ void reload(const char* nom_fichier, Piece*** plateau, Joueur* J1, Joueur* J2, C
     for(int i=0; i<8; i++){
         for(int j=0; j<8; j++){
             int name, C, Point, CptMvt;
-            fscanf(f,"&d &d &d &d", &name, &C, &Point, &CptMvt);
+            fscanf(f,"%d %d %d %d", &name, &C, &Point, &CptMvt);
 
-            if(name == -1) plateau[i][j]=NULL;
+            if(name == -1){
+                free(plateau[i][j]);
+                plateau[i][j]=NULL;
+            } 
             else{
                 plateau[i][j] = malloc(sizeof(Piece));
                 if(!plateau[i][j]){
