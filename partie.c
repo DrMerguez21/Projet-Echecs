@@ -4,7 +4,7 @@
 #include "controle_plateau.h"
 #include "mvt.h"
 #include "fini.h"
-#include "save_reload.h"
+#include "save.h"
 #include "partie.h"
 
 void partie_blanc(Piece*** plateau, Joueur* J1, Joueur* J2){ // si le premier joueur a joué est le blanc

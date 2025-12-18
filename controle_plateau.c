@@ -34,8 +34,8 @@ Piece* ini_cavalier(Couleur c){
     new->C=c;
     new->Point=3;
     new->CptMvt=0;
-    if(c==Blanc) new->Symbole="\u2658";
-    else new->Symbole ="\u265E";
+    if(c==Blanc) strcpy(new->Symbole,"\u2658");
+    else strcpy(new->Symbole,"\u265E");
 
     return new;
 }
@@ -46,8 +46,8 @@ Piece* ini_fou(Couleur c){
     new->C=c;
     new->Point=3;
     new->CptMvt=0;
-    if(c==Blanc) new->Symbole="\u2657";
-    else new->Symbole ="\u265D";
+    if(c==Blanc) strcpy(new->Symbole,"\u2657");
+    else strcpy(new->Symbole ,"\u265D");
 
     return new;
 }
@@ -58,8 +58,8 @@ Piece* ini_reine(Couleur c){
     new->C=c;
     new->Point=9;
     new->CptMvt=0;
-    if(c==Blanc) new->Symbole="\u2655";
-    else new->Symbole ="\u265B";
+    if(c==Blanc) strcpy(new->Symbole,"\u2655");
+    else strcpy(new->Symbole,"\u265B");
 
     return new;
 }
@@ -70,8 +70,8 @@ Piece* ini_roi(Couleur c){
     new->C=c;
     new->Point=99;
     new->CptMvt=0;
-    if(c==Blanc) new->Symbole="\u2654";
-    else new->Symbole ="\u265A";
+    if(c==Blanc) strcpy(new->Symbole,"\u2654");
+    else strcpy(new->Symbole,"\u265A");
 
     return new;
 }
