@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 #include "controle_plateau.h"
 
 
@@ -10,8 +11,8 @@ Piece* ini_pion(Couleur c){
     new->C=c;
     new->Point=1;
     new->CptMvt=0;
-    if(c==Blanc) new->Symbole="\u2659";
-    else new->Symbole ="\u265F";
+    if(c==Blanc) strcpy(new->Symbole,"\u2659");
+    else strcpy(new->Symbole,"\u265F");
 
     return new;
 }
@@ -22,8 +23,8 @@ Piece* ini_tour(Couleur c){
     new->C=c;
     new->Point=5;
     new->CptMvt=0;
-    if(c==Blanc) new->Symbole="\u2656";
-    else new->Symbole ="\u265C";
+    if(c==Blanc) strcpy(new->Symbole,"\u2656");
+    else strcpy(new->Symbole,"\u265C");
 
     return new;
 }
