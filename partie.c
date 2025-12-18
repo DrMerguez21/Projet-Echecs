@@ -81,8 +81,8 @@ void partie_blanc(Piece*** plateau, Joueur* J1, Joueur* J2){ // si le premier jo
         affiche_plateau(plateau);
     }
 
-    if (res == 1) printf ("Le Joueur 1 a gagné\n") ;
-    if (res == 2) printf ("Le Joueur 2 a gagné\n") ;
+    if (fini(J1, J2) == 1) printf ("Le Joueur 1 a gagné\n") ;
+    if (fini(J1, J2) == 2) printf ("Le Joueur 2 a gagné\n") ;
 }
 
 void partie_noir(Piece*** plateau, Joueur* J1, Joueur* J2){ // si le premier joueur a jouer est le noir
@@ -159,6 +159,6 @@ void partie_noir(Piece*** plateau, Joueur* J1, Joueur* J2){ // si le premier jou
         affiche_plateau(plateau);
     }
 
-    if (res == 1) printf ("Le Joueur 1 a gagné\n") ;
-    if (res == 2) printf ("Le Joueur 2 a gagné\n") ;
+    if (fini(J1, J2) == 1) printf ("Le Joueur 1 a gagné\n") ;
+    if (fini(J1, J2) == 2) printf ("Le Joueur 2 a gagné\n") ;
 }
