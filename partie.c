@@ -9,6 +9,7 @@
 
 void partie_blanc(Piece*** plateau, Joueur* J1, Joueur* J2){ // si le premier joueur a joué est le blanc
     printf("les pièces noires sont en haut, les blanches en bas (les couleurs semblent inversées si on est en affichage sombre), les x correspondent aux lignes et les y aux colonnes\n");
+    printf("Si vous voulez sauvegarder, entrez z9 z9 à la place des coordonnées de votre mouvement\n");
     affiche_plateau(plateau);
     while(fini(J1, J2)==0){
         char yd, yf;
@@ -22,6 +23,13 @@ void partie_blanc(Piece*** plateau, Joueur* J1, Joueur* J2){ // si le premier jo
         //debut du décompte pour le joueur blanc
         printf("Entrez les coordonnées de la pièce que vous voulez déplacer, puis celles de la case où vous voulez aller, séparées par un espace\n");
         scanf(" %c %d %c %d",&yd, &xd, &yf, &xf);
+        if((yd=='z')&&(xd==9)&&(yf=='z')&&(xf==9)){
+            char nom_fichier[50];
+            printf("Entrez le nom dans lequel vous voulez faire la sauvegarde, en précisant .txt\n");
+            scanf("%49s", nom_fichier);
+            save(nom_fichier, plateau, J1, J2, Blanc);
+            return;
+        }
         xdebut=convert_x(xd);
         ydebut=convert_y(yd);
         xfin=convert_x(xf);
@@ -29,6 +37,13 @@ void partie_blanc(Piece*** plateau, Joueur* J1, Joueur* J2){ // si le premier jo
         while(mouvement(1,plateau, xdebut, ydebut, xfin, yfin)==0){
             printf("Entrez les coordonnées de la pièce que vous voulez déplacer, puis celles de la case où vous voulez aller, séparées par un espace\n");
             scanf(" %c %d %c %d",&yd, &xd, &yf, &xf);
+            if((yd=='z')&&(xd==9)&&(yf=='z')&&(xf==9)){
+                char nom_fichier[50];
+                printf("Entrez le nom dans lequel vous voulez faire la sauvegarde, en précisant .txt\n");
+                scanf("%49s", nom_fichier);
+                save(nom_fichier, plateau, J1, J2, Blanc);
+                return;
+            }
             xdebut=convert_x(xd);
             ydebut=convert_y(yd);
             xfin=convert_x(xf);
@@ -54,6 +69,13 @@ void partie_blanc(Piece*** plateau, Joueur* J1, Joueur* J2){ // si le premier jo
         //debut du décompte pour le joueur noir
         printf("Entrez les coordonnées de la pièce que vous voulez déplacer, puis celles de la case où vous voulez aller, séparées par un espace\n");
         scanf(" %c %d %c %d",&yd, &xd, &yf, &xf);
+            if((yd=='z')&&(xd==9)&&(yf=='z')&&(xf==9)){
+                char nom_fichier[50];
+                printf("Entrez le nom dans lequel vous voulez faire la sauvegarde, en précisant .txt\n");
+                scanf("%49s", nom_fichier);
+                save(nom_fichier, plateau, J1, J2, Noir);
+                return;
+            }
         xdebut=convert_x(xd);
         ydebut=convert_y(yd);
         xfin=convert_x(xf);
@@ -61,6 +83,13 @@ void partie_blanc(Piece*** plateau, Joueur* J1, Joueur* J2){ // si le premier jo
         while(mouvement(1,plateau, xdebut, ydebut, xfin, yfin)==0){
             printf("Entrez les coordonnées de la pièce que vous voulez déplacer, puis celles de la case où vous voulez aller, séparées par un espace\n");
             scanf(" %c %d %c %d",&yd, &xd, &yf, &xf);
+            if((yd=='z')&&(xd==9)&&(yf=='z')&&(xf==9)){
+                char nom_fichier[50];
+                printf("Entrez le nom dans lequel vous voulez faire la sauvegarde, en précisant .txt\n");
+                scanf("%49s", nom_fichier);
+                save(nom_fichier, plateau, J1, J2, Noir);
+                return;
+            }
             xdebut=convert_x(xd);
             ydebut=convert_y(yd);
             xfin=convert_x(xf);

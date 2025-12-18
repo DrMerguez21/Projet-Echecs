@@ -9,10 +9,10 @@
 
 int main(){
     //ajouter ici la recharge de sauvegarde
-    char reload;
+    char recharge;
     printf("Voulez-vous recharger une partie? o ou n\n");
     scanf("%c",&reload);
-    if(reload=='n'){
+    if(recharge=='n'){
     Piece*** plateau=ini_plateau();
     Joueur* J1 = init_joueur (Blanc) ;
     Joueur* J2 = init_joueur (Noir) ;
