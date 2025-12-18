@@ -15,11 +15,11 @@ void partie_blanc(Piece*** plateau, Joueur* J1, Joueur* J2){ // si le premier jo
         char yd, yf;
         int xd, xf;
         int xdebut, ydebut, xfin, yfin;
-        double p ;
-        clock_t start, end ;
+        time_t start, end;
+        int tps;
 
         printf("Au tour des blancs\n");
-        start = clock () ;
+        time(&start);
         //debut du décompte pour le joueur blanc
         printf("Entrez les coordonnées de la pièce que vous voulez déplacer, puis celles de la case où vous voulez aller, séparées par un espace\n");
         scanf(" %c %d %c %d",&yd, &xd, &yf, &xf);
@@ -57,15 +57,15 @@ void partie_blanc(Piece*** plateau, Joueur* J1, Joueur* J2){ // si le premier jo
         }
         deplacement (J1, plateau, xdebut, ydebut, xfin, yfin) ;
         //fin du décompte pour le joueur blanc
-        end = clock () ;
-        p = (double) (end - start) / CLOCKS_PER_SEC ;
-        J1 -> temps -= p ;
+        time(&end) ;
+        tps = end - start;
+        J1 -> temps -= tps ;
         printf ("Il vous reste %d secondes\n", J1 -> temps) ;
         affiche_plateau(plateau);
         if (fini(J1, J2)) return ;
 
         printf("Au tour des noirs\n");
-        start = clock () ;
+        time(&start);
         //debut du décompte pour le joueur noir
         printf("Entrez les coordonnées de la pièce que vous voulez déplacer, puis celles de la case où vous voulez aller, séparées par un espace\n");
         scanf(" %c %d %c %d",&yd, &xd, &yf, &xf);
@@ -103,9 +103,9 @@ void partie_blanc(Piece*** plateau, Joueur* J1, Joueur* J2){ // si le premier jo
         } 
         deplacement (J2, plateau, xdebut, ydebut, xfin, yfin) ;
         //fin du décompte pour le joueur noir
-        end = clock () ;
-        p = (double) (end - start) / CLOCKS_PER_SEC ;
-        J2 -> temps -= p ;
+        time(&end);
+        tps = end - start;
+        J2 -> temps -= tps ;
         printf ("Il vous reste %d secondes\n", J2 -> temps) ;
         affiche_plateau(plateau);
     }
