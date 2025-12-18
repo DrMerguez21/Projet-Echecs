@@ -11,7 +11,7 @@ void partie_blanc(Piece*** plateau, Joueur* J1, Joueur* J2){ // si le premier jo
     printf("les pièces noires sont en haut, les blanches en bas (les couleurs semblent inversées si on est en affichage sombre), les x correspondent aux lignes et les y aux colonnes\n");
     printf("Si vous voulez sauvegarder, entrez z9 z9 à la place des coordonnées de votre mouvement\n");
     affiche_plateau(plateau);
-    while(fini(J1, J2)==0){
+    while(!fini(J1, J2)){
         char yd, yf;
         int xd, xf;
         int xdebut, ydebut, xfin, yfin;
@@ -62,7 +62,7 @@ void partie_blanc(Piece*** plateau, Joueur* J1, Joueur* J2){ // si le premier jo
         J1 -> temps -= p ;
         printf ("Il vous reste %d secondes\n", J1 -> temps) ;
         affiche_plateau(plateau);
-        if (fini(J1, J2) != 0) break ;
+        if (fini(J1, J2)) return ;
 
         printf("Au tour des noirs\n");
         start = clock () ;
@@ -109,9 +109,6 @@ void partie_blanc(Piece*** plateau, Joueur* J1, Joueur* J2){ // si le premier jo
         printf ("Il vous reste %d secondes\n", J2 -> temps) ;
         affiche_plateau(plateau);
     }
-
-    if (fini(J1, J2) == 1) printf ("Le Joueur 1 a gagné\n") ;
-    if (fini(J1, J2) == 2) printf ("Le Joueur 2 a gagné\n") ;
 }
 
 void partie_noir(Piece*** plateau, Joueur* J1, Joueur* J2){ // si le premier joueur a jouer est le noir
