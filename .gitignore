@@ -6,6 +6,9 @@
 *.exe
 *.out
 
+#sauvegarde
+*.txt
+
 control
 controle_plateau
 prog

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 #include "controle_plateau.h"
 #include "fini.h"
 #include "mvt.h"
@@ -20,8 +21,10 @@ void save(const char* nom_fichier, Piece*** plateau, Joueur* J1, Joueur* J2, Cou
 
     for(int i=0; i<8; i++){
         for(int j=0; j<8; j++){
-            if (plateau[i][j]!=NULL) fprintf(f,"%d %d %d %d\n", plateau[i][j]->name,plateau[i][j]->C,plateau[i][j]->Point,plateau[i][j]->CptMvt, plateau[i][j]->Symbole); //les symboles seronts remis au chargement
-            fprintf(f,"-1 -1 0 0\n"); //pour identifier les cases vides
+            if (plateau[i][j]!=NULL) fprintf(f,"%d %d %d %d %s\n", plateau[i][j]->name,plateau[i][j]->C,plateau[i][j]->Point,plateau[i][j]->CptMvt, plateau[i][j]->Symbole); //les symboles seronts remis au chargement
+            else{
+                fprintf(f,"-1 -1 0 0 -\n"); //pour identifier les cases vides
+            }
         }
     }
     
@@ -47,7 +50,7 @@ void reload(const char* nom_fichier, Piece*** plateau, Joueur* J1, Joueur* J2, C
         for(int j=0; j<8; j++){
             int name, C, Point, CptMvt;
             char symbole[5];
-            fscanf(f,"%d %d %d %d", &name, &C, &Point, &CptMvt, symbole);
+            fscanf(f,"%d %d %d %d %4s", &name, &C, &Point, &CptMvt, symbole);
 
             if(name == -1){
                 plateau[i][j]=NULL;
