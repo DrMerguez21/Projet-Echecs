@@ -4,6 +4,7 @@
 #include "controle_plateau.h"
 #include "fini.h"
 #include " mvt.h"
+#include "save_reload.h"
 
 void save(const char* nom_fichier, Piece*** plateau, Joueur* J1, Joueur* J2, Couleur actuel){
     FILE *f=fopen(nom_fichier, "w");

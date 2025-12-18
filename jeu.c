@@ -4,6 +4,7 @@
 #include "controle_plateau.h"
 #include "mvt.h"
 #include "fini.h"
+#include "save_reload.h"
 
 int main(){
     //ajouter ici la recharge de sauvegarde
