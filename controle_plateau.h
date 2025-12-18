@@ -18,7 +18,7 @@ typedef struct piece {
     Couleur C ;
     int Point ;
     int CptMvt ;
-    const char* Symbole ;
+    char Symbole[5] ;
 } Piece;
 
 typedef struct joueur {
