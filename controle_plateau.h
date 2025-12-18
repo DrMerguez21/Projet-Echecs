@@ -41,6 +41,8 @@ Piece* ini_reine(Couleur c);
 
 Piece* ini_roi(Couleur c);
 
+Piece*** ini_plateau_vide();
+
 Piece*** ini_plateau();
 
 void affiche_plateau(Piece*** plateau);

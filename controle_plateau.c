@@ -76,12 +76,16 @@ Piece* ini_roi(Couleur c){
     return new;
 }
 
-
-Piece*** ini_plateau(){
+Piece*** ini_plateau_vide(){
     Piece*** plateau=malloc(8*sizeof(Piece**)); //crée les lignes du plateau représentée par les x
     for(int i=0; i<8; i++){
         plateau[i]=malloc(8*sizeof(Piece*)); //crée les colonnes du plateau représentée par les y
     }
+    return plateau;
+}
+
+Piece*** ini_plateau(){
+    Piece*** plateau=ini_plateau_vide();
     plateau[0][0]=ini_tour(Noir);// pièces noires
     plateau[0][1]=ini_cavalier(Noir);
     plateau[0][2]=ini_fou(Noir);
