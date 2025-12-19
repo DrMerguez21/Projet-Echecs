@@ -121,7 +121,6 @@ Piece*** ini_plateau(){
 Joueur* init_joueur (Couleur c) {
     Joueur* J = malloc(sizeof(Joueur)) ;
     J -> C = c ;
-    J -> temps = 900 ;
     J -> Points = 0 ;
     return J ;
 }
@@ -188,5 +187,26 @@ void affiche_temps(Joueur* J){
 
 void affiche_point(Joueur* opposant){
     int points=39-(opposant->Points);
-    printf("Il vous reste %d points", points);
+    printf("Il vous reste %d points\n", points);
+}
+
+void duree(Joueur* J1, Joueur* J2){
+    char longueur;
+    printf("quelle type de partie voulez vous jouer ?\n");
+    printf("Si vous voulez faire un Blitz de 5 min, entrez b.\n");
+    printf("Si vous voulez faire une partie rapide de 20 min, entrez r.\n");
+    printf("Si vous voulez faire une partie longue, entrez l.\n");
+    scanf(" %c", &longueur);
+    if(longueur =='b'){
+        J1->temps=(5*60);
+        J2->temps=(5*60);
+        return;
+    }
+    if(longueur =='l'){
+        J1->temps=(60*60);
+        J2->temps=(60*60);
+        return;
+    }
+    J1->temps=(20*60);
+    J2->temps=(20*60);
 }
