@@ -1,8 +1,8 @@
 #ifndef SAVE_RELOAD_H
 #define SAVE_RELOAD_H
 
-void partie_blanc(Piece*** plateau, Joueur* J1, Joueur* J2);
+int tour_joueur(Piece*** plateau, Joueur* joueur, Joueur* opposant);
 
-void partie_noir(Piece*** plateau, Joueur* J1, Joueur* J2);
+void partie(Piece*** plateau, Joueur* J1, Joueur* J2, int noir_commence);
 
 #endif

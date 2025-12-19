@@ -17,7 +17,7 @@ int main(){
     Joueur* J1 = init_joueur (Blanc) ;
     Joueur* J2 = init_joueur (Noir) ;
     
-    partie_blanc(plateau, J1, J2);
+    partie(plateau, J1, J2, 0);
     }
     else{
         Piece*** plateau=ini_plateau_vide();
@@ -28,9 +28,9 @@ int main(){
         printf("Entrez le nom de votre sauvegarde, en ajoutant bien .txt à la fin\n");
         scanf("%49s", nom_fichier);
         reload(nom_fichier, plateau, J1, J2, &actuel);
-        if(actuel== Blanc) partie_blanc(plateau, J1, J2);
+        if(actuel== Blanc) partie(plateau, J1, J2,0);
         else{
-            partie_noir(plateau, J1, J2);
+            partie(plateau, J1, J2,1);
         }
     }
 }
