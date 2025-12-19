@@ -126,6 +126,7 @@ Joueur* init_joueur (Couleur c) {
 }
 
 void affiche_plateau(Piece*** plateau){
+    printf("    a   b   c   d   e   f   g   h\n");
     printf("  +---+---+---+---+---+---+---+---+\n");
     for(int i=0;i<8;i++){
         printf("%d |", 8-i);
@@ -133,7 +134,7 @@ void affiche_plateau(Piece*** plateau){
             if(plateau[i][j]!=NULL) printf(" %s |",plateau[i][j]->Symbole);
             else printf("   |");
         }
-        printf("\n");
+        printf(" %d\n", 8-i);
         printf("  +---+---+---+---+---+---+---+---+\n");
     }
     printf("    a   b   c   d   e   f   g   h\n");
