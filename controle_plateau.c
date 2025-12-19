@@ -159,7 +159,8 @@ int convert_x(int xdebut){
         case 5: return 3;
         case 6: return 2;
         case 7: return 1;
-    }return 0;
+        case 8: return 0;
+    }return -1; //si la case n'est pas dans le plateau
 }
 
 int convert_y(char ydebut){
@@ -171,5 +172,6 @@ int convert_y(char ydebut){
         case 'e': return 4;
         case 'f': return 5;
         case 'g': return 6;
-    }return 7;
+        case 'h': return 7;
+    }return -1;
 }
