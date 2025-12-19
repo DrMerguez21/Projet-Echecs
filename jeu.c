@@ -33,4 +33,7 @@ int main(){
             partie(plateau, J1, J2,1);
         }
     }
+    free_plateau(plateau);
+    free(J1);
+    free(J2);
 }
