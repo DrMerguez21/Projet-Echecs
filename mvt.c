@@ -198,7 +198,7 @@ int mvt_roi (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int x
 int mouvement (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
     if((xdebut==-1)||(ydebut==-1)||(xfin==-1)||(yfin==-1)){
         if(affiche_erreur) printf("L'une des cases sélectionnées ne fait pas partie du plateau\n");
-        return (0)
+        return (0);
     }if ((xdebut == xfin) && (ydebut == yfin)) {
         if(affiche_erreur) printf ("Aucun Déplacement effectué\n") ;
         return (0) ;
