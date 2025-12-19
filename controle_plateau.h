@@ -55,4 +55,6 @@ int convert_y(char ydebut);
 
 void affiche_temps(Joueur* J);
 
+void affiche_point(Joueur* opposant);
+
 #endif

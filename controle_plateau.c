@@ -185,3 +185,8 @@ void affiche_temps(Joueur* J){
     }
     printf("Il vous reste %d min et %d s\n", minute, temps);
 }
+
+void affiche_point(Joueur* opposant){
+    int points=39-(opposant->Points);
+    printf("Il vous reste %d points", points);
+}
