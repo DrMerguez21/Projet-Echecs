@@ -21,7 +21,7 @@ int grand_roque(int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, in
 
 int mvt_roi (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);
 
-int mouvement (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin);
+int mouvement (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin, Couleur couleur);
 
 
 #endif

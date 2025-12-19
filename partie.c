@@ -31,7 +31,7 @@ int tour_joueur(Piece*** plateau, Joueur* joueur, Joueur* opposant){
     ydebut=convert_y(yd);
     xfin=convert_x(xf);
     yfin=convert_y(yf);
-    while(mouvement(1,plateau, xdebut, ydebut, xfin, yfin)==0){
+    while(mouvement(1,plateau, xdebut, ydebut, xfin, yfin, joueur->C)==0){
         printf("Entrez les coordonnées de la pièce que vous voulez déplacer, puis celles de la case où vous voulez aller, séparées par un espace\n");
         scanf(" %c %d %c %d",&yd, &xd, &yf, &xf);
         if((yd=='z')&&(xd==9)&&(yf=='z')&&(xf==9)){
@@ -46,7 +46,7 @@ int tour_joueur(Piece*** plateau, Joueur* joueur, Joueur* opposant){
         ydebut=convert_y(yd);
         xfin=convert_x(xf);
         yfin=convert_y(yf);
-    } int mouv_spe=mouvement(0,plateau, xdebut, ydebut, xfin, yfin);
+    } int mouv_spe=mouvement(0,plateau, xdebut, ydebut, xfin, yfin, joueur->C);
     if(mouv_spe==2){ //petit roque
         deplacement(joueur, plateau, xdebut, 7, xdebut, 5); //deplacement de la tour de droite    
     }

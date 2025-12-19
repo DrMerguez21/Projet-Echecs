@@ -195,8 +195,11 @@ int mvt_roi (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int x
     return (0) ;
 }
 
-int mouvement (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
-    if((xdebut==-1)||(ydebut==-1)||(xfin==-1)||(yfin==-1)){
+int mouvement (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin, Couleur couleur) {
+    if(plateau[xdebut][ydebut]->C!=couleur){
+        if(affiche_erreur) printf("La pièce ne vous appartient pas\n");
+        return (0);
+    }if((xdebut==-1)||(ydebut==-1)||(xfin==-1)||(yfin==-1)){
         if(affiche_erreur) printf("L'une des cases sélectionnées ne fait pas partie du plateau\n");
         return (0);
     }if ((xdebut == xfin) && (ydebut == yfin)) {
