@@ -25,17 +25,25 @@ int fini (Joueur* J1, Joueur* J2) {
     return (0) ;
 }
 
+void trouver_roi(Piece*** plateau, Couleur couleur){
+    for(int i=0; i<8; i++){
+        for(int j=0; j<8; j++){
+            if((plateau[i][j]!=NULL)&&(plateau[i][j]->name==Roi)&&(plateau[i][j]->C==couleur)) check(plateau,i,j);
+        }
+    }
+}
+
 int check (Piece*** plateau, int xroi, int yroi) {
-    int echec = 0 ;
     for (int i = 0 ; i < 8 ; i++) {
         for (int j = 0 ; j < 8 ; j++) {
-            if ((plateau[i][j] != NULL) && (plateau[i][j] -> C != plateau[xroi][yroi] -> C)) {
-                if (mouvement(0,plateau, i, j, xroi, yroi, plateau[xroi][yroi] -> C) == 1) {
-                    echec = 1 ;
-                    printf ("Echec de la pièce en %d %d", i, j) ;
+            if ((plateau[i][j] != NULL) && (plateau[i][j] -> C != plateau[xroi][yroi] -> C) && (mouvement(0,plateau, i, j, xroi, yroi, plateau[i][j] -> C) == 1)) {
+                if(plateau[xroi][yroi]==Blanc) printf ("Echec du roi blanc en %d %d", xroi, yroi) ;
+                else{
+                    printf ("Echec du roi noir en %d %d\n", convert_y(yroi), convert_x(xroi)) ;        
                 }
+                return 1;
             }
         }
-    } return echec ;
+    } return 0;
 }
 

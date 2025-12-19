@@ -54,7 +54,7 @@ int tour_joueur(Piece*** plateau, Joueur* joueur, Joueur* opposant){
         deplacement(joueur, plateau, xdebut, 0, xdebut, 3); //deplacement de la tour de gauche
     }
     deplacement (joueur, plateau, xdebut, ydebut, xfin, yfin) ;
-    
+    trouver_roi(plateau, opposant->C); // on vérif si le mouvement du joueur à mis le roi opposé en echec
     time(&end) ;//fin du décompte pour le joueur blanc
     tps = end - start;
     joueur -> temps -= tps ;
