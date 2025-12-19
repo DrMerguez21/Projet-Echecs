@@ -60,7 +60,7 @@ void partie_blanc(Piece*** plateau, Joueur* J1, Joueur* J2){ // si le premier jo
         time(&end) ;
         tps = end - start;
         J1 -> temps -= tps ;
-        printf ("Il vous reste %d secondes\n", J1 -> temps) ;
+        affiche_temps(J1);
         affiche_plateau(plateau);
         if (fini(J1, J2)) return ;
 
@@ -106,7 +106,7 @@ void partie_blanc(Piece*** plateau, Joueur* J1, Joueur* J2){ // si le premier jo
         time(&end);
         tps = end - start;
         J2 -> temps -= tps ;
-        printf ("Il vous reste %d secondes\n", J2 -> temps) ;
+        affiche_temps(J2);
         affiche_plateau(plateau);
     }
 }

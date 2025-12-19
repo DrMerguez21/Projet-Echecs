@@ -175,3 +175,13 @@ int convert_y(char ydebut){
         case 'h': return 7;
     }return -1;
 }
+
+void affiche_temps(Joueur* J){
+    int temps=J->temps;
+    int minute=0;
+    while(temps >=60){
+        minute ++;
+        temps-=60;
+    }
+    printf("Il vous reste %d min et %d s\n", minute, temps);
+}

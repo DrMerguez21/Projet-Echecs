@@ -53,4 +53,6 @@ int convert_x(int xdebut);
 
 int convert_y(char ydebut);
 
+void affiche_temps(Joueur* J);
+
 #endif
