@@ -51,7 +51,11 @@ void free_plateau(Piece*** plateau);
 
 int convert_x(int xdebut);
 
+int reconvert_x(int x);
+
 int convert_y(char ydebut);
+
+char reconvert_y(int y);
 
 void affiche_temps(Joueur* J);
 

@@ -39,7 +39,7 @@ int check (Piece*** plateau, int xroi, int yroi) {
             if ((plateau[i][j] != NULL) && (plateau[i][j] -> C != plateau[xroi][yroi] -> C) && (mouvement(0,plateau, i, j, xroi, yroi, plateau[i][j] -> C) == 1)) {
                 if(plateau[xroi][yroi]==Blanc) printf ("Echec du roi blanc en %d %d", xroi, yroi) ;
                 else{
-                    printf ("Echec du roi noir en %d %d\n", convert_y(yroi), convert_x(xroi)) ;        
+                    printf ("Echec du roi noir en %c%d\n", reconvert_y(yroi), reconvert_x(xroi)) ;        
                 }
                 return 1;
             }
