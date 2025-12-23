@@ -7,19 +7,19 @@
 
 int fini (Joueur* J1, Joueur* J2) {
     if (J1 -> Points >= 99) {
-        printf("Le joueur 1 a gagné\n");
+        printf("Le joueur Bleu a gagné\n");
         return (1) ;
     }
     if (J2 -> Points >= 99) {
-        printf("Le joueur 2 a gagné\n");
+        printf("Le joueur Rouge a gagné\n");
         return (1) ;
     }
     if(J1 ->temps <= 0){
-        printf("Le joueur 1 a perdu au temps\n");
+        printf("Le joueur Bleu a perdu au temps\n");
         return (1);
     }
     if(J2 -> temps <=0){
-        printf("Le joueur 2 a perdu au temps\n");
+        printf("Le joueur Rouge a perdu au temps\n");
         return (1);
     }
     return (0) ;
