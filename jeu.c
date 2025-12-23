@@ -31,7 +31,10 @@ int main(){
         char nom_fichier[50];
         printf("Entrez le nom de votre sauvegarde, en ajoutant bien .txt à la fin\n");
         scanf("%49s", nom_fichier);
-        reload(nom_fichier, plateau, J1, J2, &actuel);
+        while(!reload(nom_fichier, plateau, J1, J2, &actuel)){
+            printf("Entrez le nom de votre sauvegarde, en ajoutant bien .txt à la fin\n");
+            scanf("%49s", nom_fichier);
+        }
         if(actuel== Blanc) partie(plateau, J1, J2,0);
         else{
             partie(plateau, J1, J2,1);

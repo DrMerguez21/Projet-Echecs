@@ -32,11 +32,11 @@ void save(const char* nom_fichier, Piece*** plateau, Joueur* J1, Joueur* J2, Cou
     printf("Sauvegarde réussie\n");
 }
 
-void reload(const char* nom_fichier, Piece*** plateau, Joueur* J1, Joueur* J2, Couleur* actuel){
+int reload(const char* nom_fichier, Piece*** plateau, Joueur* J1, Joueur* J2, Couleur* actuel){
     FILE *f=fopen(nom_fichier, "r");
     if(f==NULL){
         perror("Erreur de chargement\n");
-        return;
+        return 0;
     }
     int tmp;
     fscanf(f, "%d", &tmp);
@@ -67,4 +67,5 @@ void reload(const char* nom_fichier, Piece*** plateau, Joueur* J1, Joueur* J2, C
     }
     fclose(f);
     printf("Chargement réussi\n");
+    return 1;
 }
