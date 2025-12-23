@@ -14,8 +14,8 @@ int tour_joueur(Piece*** plateau, Joueur* joueur, Joueur* opposant){
     time_t start, end;
     int tps;
 
-    if(joueur->C==Blanc) printf("Au tour des Blancs\n");
-    else{ printf("Au tour des Noirs\n");}
+    if(joueur->C==Blanc) printf("Au tour des Bleus\n");
+    else{ printf("Au tour des Rouges\n");}
     time(&start); //debut du décompte pour le joueur blanc
     printf("Entrez les coordonnées de la pièce que vous voulez déplacer, puis celles de la case où vous voulez aller, séparées par un espace\n");
     scanf(" %c %d %c %d",&yd, &xd, &yf, &xf);
@@ -66,7 +66,7 @@ int tour_joueur(Piece*** plateau, Joueur* joueur, Joueur* opposant){
 }
 
 void partie(Piece*** plateau, Joueur* J1, Joueur* J2, int noir_commence){ // noir_commence=1 si c'est au noir de commencer
-    printf("les pièces noires sont en haut, les blanches en bas (les couleurs semblent inversées si on est en affichage sombre), les x correspondent aux lignes et les y aux colonnes\n");
+    printf("les pièces noires sont en haut représentée en rouge, les blanches en bas en bleu, les x correspondent aux lignes et les y aux colonnes\n");
     printf("Si vous voulez sauvegarder, entrez z9 z9 à la place des coordonnées de votre mouvement\n");
     affiche_plateau(plateau);
     while(!fini(J1, J2)){

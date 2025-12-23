@@ -4,6 +4,12 @@
 #include <string.h>
 #include "controle_plateau.h"
 
+#define RESET "\033[0m"
+#define RED   "\033[31m"
+#define BLUE  "\033[34m"
+
+
+
 
 Piece* ini_pion(Couleur c){
     Piece* new=malloc(sizeof(Piece));
@@ -131,7 +137,12 @@ void affiche_plateau(Piece*** plateau){
     for(int i=0;i<8;i++){
         printf("%d |", 8-i);
         for (int j=0;j<8;j++){
-            if(plateau[i][j]!=NULL) printf(" %s |",plateau[i][j]->Symbole);
+            if(plateau[i][j]!=NULL){
+                if (plateau[i][j]->C==Blanc) printf(BLUE " %s " RESET,plateau[i][j]->Symbole);
+                else printf(RED " %s " RESET,plateau[i][j]->Symbole);
+                printf("|");
+            }
+            
             else printf("   |");
         }
         printf(" %d\n", 8-i);
