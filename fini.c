@@ -57,12 +57,12 @@ int case_attaque(Piece*** plateau, int x, int y, Couleur couleur){ // vérifie s
     plateau[x][y]=temp;
     for(int i=0; i<8; i++){
         for(int j=0; j<8; j++){
-            if((plateau[i][j]!=NULL)&&(plateau[i][j]->C!=couleur)&&(mouvement(0,plateau, i, j, x, y)))[
+            if((plateau[i][j]!=NULL)&&(plateau[i][j]->C!=couleur)&&(mouvement(0,plateau, i, j, x, y, plateau[i][j]->C))){
                 printf("la case %c%d est attaquée\n", reconvert_y(y), reconvert_x(x));
                 free(temp);
                 plateau[x][y]=NULL;
                 return 1; 
-            ]
+            }
         }
     }
     free(temp);
