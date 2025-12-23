@@ -236,7 +236,7 @@ void duree(Joueur* J1, Joueur* J2){
     J2->temps=(20*60);
 }
 
-void promotion(Piece*** plateau, int xpion, int ypion, Joueur opposant){
+void promotion(Piece*** plateau, int xpion, int ypion, Joueur* opposant){
     int temp=plateau[xpion][ypion]->CptMvt;
     char promo;
     if ((plateau[xpion][ypion]!=NULL)&&(plateau[xpion][ypion]->name==Pion)){
