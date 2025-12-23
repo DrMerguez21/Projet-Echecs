@@ -51,3 +51,21 @@ int check (Piece*** plateau, int xroi, int yroi) {
     } return 0;
 }
 
+int case_attaque(Piece*** plateau, int x, int y, Couleur couleur){ // vérifie si la case vide est attaquée par le joueur de la couleur opposé
+    if(plateau[x][y]!=NULL) return 0;
+    Piece* temp=ini_pion(couleur); //on créé une pièce fantome de la couleur du joueur
+    plateau[x][y]=temp;
+    for(int i=0; i<8; i++){
+        for(int j=0; j<8; j++){
+            if((plateau[i][j]!=NULL)&&(plateau[i][j]->C!=couleur)&&(mouvement(0,plateau, i, j, x, y)))[
+                printf("la case %c%d est attaquée\n", reconvert_y(y), reconvert_x(x));
+                free(temp);
+                plateau[x][y]=NULL;
+                return 1; 
+            ]
+        }
+    }
+    free(temp);
+    plateau[x][y]=NULL;
+    return 0;
+}

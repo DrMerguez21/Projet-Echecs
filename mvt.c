@@ -166,16 +166,22 @@ int mvt_reine (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int
 }
 
 int petit_roque(int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin){
-    if((plateau[xdebut][7]==NULL)||(plateau[xdebut][7]->name!=Tour)) return 0;
-    if((plateau[xdebut][ydebut]->CptMvt!=0)||(plateau[xdebut][7]->CptMvt!=0)) return 0; //roque impossible si le roi  ou la tour a déjà bougé
-    if(check(plateau,xdebut, ydebut))return 0; // si le roi est en échec ou que les cases sur lesquelles il va se déplacer sont attaqué, le roque est impossible
+    if((plateau[xdebut][7]==NULL)||(plateau[xdebut][7]->name!=Tour)||(plateau[xdebut][7]->C!=plateau[xdebut][ydebut]->C)) return 0;
+    if((plateau[xdebut][ydebut]->CptMvt!=0)||(plateau[xdebut][7]->CptMvt!=0)) return 0; //roque impossible si le roi ou la tour a déjà bougé
+    if(check(plateau,xdebut, ydebut))return 0; // si le roi est en échec, le roque est impossible
+    for(int i=ydebut+1; i<=yfin; i++){
+        if(case_attaque(plateau, xdebut, i, plateau[xdebut][ydebut]->C)) return 0; // le mouvement n'est pas possible si l'une des cases sur lesquelles passe le roi est attaquée
+    }
     return mvt_tour(affiche_erreur, plateau,xdebut, 7, xdebut, 5); //si le mouvement de la tour est impossible, car il y a des pièces sur le chemin, le roque ne l'est pas non plus   
 }
 
 int grand_roque(int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin){
-    if((plateau[xdebut][0]==NULL) || (plateau[xdebut][0]->name!=Tour)) return 0;
+    if((plateau[xdebut][0]==NULL) || (plateau[xdebut][0]->name!=Tour)||(plateau[xdebut][0]->C!=plateau[xdebut][ydebut]->C)) return 0;
     if((plateau[xdebut][ydebut]->CptMvt!=0)||(plateau[xdebut][0]->CptMvt!=0)) return 0; //roque impossible si le roi  ou la tour a déjà bougé
     if(check(plateau,xdebut, ydebut))return 0; // si le roi est en échec ou que les cases sur lesquelles il va se déplacer sont attaqué, le roque est impossible
+    for(int i=ydebut-1; i>=yfin; i--){
+        if(case_attaque(plateau, xdebut, i, plateau[xdebut][ydebut]->C)) return 0; // le mouvement n'est pas possible si l'une des cases sur lesquelles passe le roi est attaquée
+    }
     return mvt_tour(affiche_erreur, plateau,xdebut, 0, xdebut, 3); //si le mouvement de la tour est impossible, car il y a des pièces sur le chemin, le roque ne l'est pas non plus   
 }
 
