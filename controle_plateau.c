@@ -246,8 +246,8 @@ void promotion(Piece*** plateau, int xpion, int ypion, Joueur* opposant){
             scanf(" %c", &promo);
             free(plateau[xpion][ypion]);
             if(promo == 'f') plateau[xpion][ypion]=ini_fou(Blanc);
-            if(promo=='t') plateau[xpion][ypion]=ini_tour(Blanc);
-            if(promo=='c') plateau[xpion][ypion]=ini_cavalier(Blanc);
+            else if(promo=='t') plateau[xpion][ypion]=ini_tour(Blanc);
+            else if(promo=='c') plateau[xpion][ypion]=ini_cavalier(Blanc);
             else plateau[xpion][ypion]=ini_reine(Blanc);
             plateau[xpion][ypion]->CptMvt=temp;
             opposant->Points -= (plateau[xpion][ypion]->Point -1); //on prend en compte la promotion dans le décompte des points
