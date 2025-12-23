@@ -221,6 +221,7 @@ void duree(Joueur* J1, Joueur* J2){
     printf("Si vous voulez faire un Blitz de 5 min, entrez b.\n");
     printf("Si vous voulez faire une partie rapide de 20 min, entrez r.\n");
     printf("Si vous voulez faire une partie longue, entrez l.\n");
+    printf("Sinon, ce sera une partie rapide\n");
     scanf(" %c", &longueur);
     if(longueur =='b'){
         J1->temps=(5*60);
