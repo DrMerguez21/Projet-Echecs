@@ -63,4 +63,6 @@ void affiche_point(Joueur* opposant);
 
 void duree(Joueur* J1, Joueur* J2);
 
+void promotion(Piece*** plateau, int xpion, int ypion, Joueur opposant);
+
 #endif

@@ -235,3 +235,34 @@ void duree(Joueur* J1, Joueur* J2){
     J1->temps=(20*60);
     J2->temps=(20*60);
 }
+
+void promotion(Piece*** plateau, int xpion, int ypion, Joueur opposant){
+    int temp=plateau[xpion][ypion]->CptMvt;
+    char promo;
+    if ((plateau[xpion][ypion]!=NULL)&&(plateau[xpion][ypion]->name==Pion)){
+        if((plateau[xpion][ypion]->C==Blanc)&&(xpion==0)){ //un pion blanc a traversé le plateau
+            printf("le pion en %c%d peut être promu. Entrez r pour le convertir en reine, f pour le convertir en fou, t pour en tour et c pour en cavalier.\n", reconvert_y(ypion), reconvert_x(xpion));
+            printf("Sinon la pièce sera automatiquement convertie en reine\n");
+            scanf(" %c", &promo);
+            free(plateau[xpion][ypion]);
+            if(promo == 'f') plateau[xpion][ypion]=ini_fou(Blanc);
+            if(promo=='t') plateau[xpion][ypion]=ini_tour(Blanc);
+            if(promo=='c') plateau[xpion][ypion]=ini_cavalier(Blanc);
+            else plateau[xpion][ypion]=ini_reine(Blanc);
+            plateau[xpion][ypion]->CptMvt=temp;
+            opposant->Points -= (plateau[xpion][ypion]->Point -1); //on prend en compte la promotion dans le décompte des points
+        }
+        if((plateau[xpion][ypion]->C==Noir)&&(xpion==7)){ //un pion blanc a traversé le plateau
+            printf("le pion en %c%d peut être promu. Entrez r pour le convertir en reine, f pour le convertir en fou, t pour en tour et c pour en cavalier.\n", reconvert_y(ypion), reconvert_x(xpion));
+            printf("Sinon la pièce sera automatiquement convertie en reine\n");
+            scanf(" %c", &promo);
+            free(plateau[xpion][ypion]);
+            if(promo == 'f') plateau[xpion][ypion]=ini_fou(Noir);
+            else if(promo=='t') plateau[xpion][ypion]=ini_tour(Noir);
+            else if(promo=='c') plateau[xpion][ypion]=ini_cavalier(Noir);
+            else plateau[xpion][ypion]=ini_reine(Noir);
+            plateau[xpion][ypion]->CptMvt=temp;
+            opposant->Points -= (plateau[xpion][ypion]->Point -1);
+        }
+    }
+}
