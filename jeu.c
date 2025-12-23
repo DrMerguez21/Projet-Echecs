@@ -29,10 +29,10 @@ int main(){
         J2=malloc(sizeof(Joueur));
         Couleur actuel;
         char nom_fichier[50];
-        printf("Entrez le nom de votre sauvegarde, en ajoutant bien .txt à la fin\n");
+        printf("Entrez le nom de votre sauvegarde\n");
         scanf("%49s", nom_fichier);
         while(!reload(nom_fichier, plateau, J1, J2, &actuel)){
-            printf("Entrez le nom de votre sauvegarde, en ajoutant bien .txt à la fin\n");
+            printf("Entrez le nom de votre sauvegarde\n");
             scanf("%49s", nom_fichier);
         }
         if(actuel== Blanc) partie(plateau, J1, J2,0);
