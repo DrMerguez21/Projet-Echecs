@@ -69,12 +69,12 @@ void partie(Piece*** plateau, Joueur* J1, Joueur* J2, int noir_commence){ // noi
     printf("les pièces noires sont en haut représentée en rouge, les blanches en bas en bleu, les x correspondent aux lignes et les y aux colonnes\n");
     printf("Si vous voulez sauvegarder, entrez z9 z9 à la place des coordonnées de votre mouvement\n");
     affiche_plateau(plateau);
-    while(!fini(J1, J2)){
+    while(!fini(plateau, J1, J2)){
         int sauvegarde;
         if(!noir_commence){
         sauvegarde=tour_joueur(plateau, J1, J2);
         if (sauvegarde) return;
-        if (fini(J1, J2)) return ;
+        if (fini(plateau,J1, J2)) return ;
         }
 
         sauvegarde=tour_joueur(plateau, J2, J1);

@@ -5,12 +5,12 @@
 #include "mvt.h"
 #include "fini.h"
 
-int fini (Joueur* J1, Joueur* J2) {
-    if (J1 -> Points >= 99) {
+int fini (Piece*** plateau, Joueur* J1, Joueur* J2) {
+    if (!trouver_roi(plateau, Noir)) {
         printf("Le joueur Bleu a gagné\n");
         return (1) ;
     }
-    if (J2 -> Points >= 99) {
+    if (!trouver_roi(plateau, Blanc)) {
         printf("Le joueur Rouge a gagné\n");
         return (1) ;
     }
@@ -25,12 +25,16 @@ int fini (Joueur* J1, Joueur* J2) {
     return (0) ;
 }
 
-void trouver_roi(Piece*** plateau, Couleur couleur){
+int trouver_roi(Piece*** plateau, Couleur couleur){
     for(int i=0; i<8; i++){
         for(int j=0; j<8; j++){
-            if((plateau[i][j]!=NULL)&&(plateau[i][j]->name==Roi)&&(plateau[i][j]->C==couleur)) check(plateau,i,j);
+            if((plateau[i][j]!=NULL)&&(plateau[i][j]->name==Roi)&&(plateau[i][j]->C==couleur)){
+                check(plateau,i,j);
+                return 1;
+            }
         }
     }
+    return 0; //le roi n'a pas été trouvé
 }
 
 int check (Piece*** plateau, int xroi, int yroi) {
