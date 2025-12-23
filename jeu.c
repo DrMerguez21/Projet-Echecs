@@ -15,15 +15,7 @@ int main(){
     Joueur* J2;
     printf("Voulez-vous recharger une partie? o ou n\n");
     scanf(" %c",&recharge);
-    if(recharge=='n'){
-    plateau=ini_plateau();
-    J1 = init_joueur (Blanc) ;
-    J2 = init_joueur (Noir) ;
-    duree(J1, J2);
-    
-    partie(plateau, J1, J2, 0);
-    }
-    else{
+    if(recharge=='o'){
         plateau=ini_plateau_vide();
         J1=malloc(sizeof(Joueur));
         J2=malloc(sizeof(Joueur));
@@ -40,6 +32,15 @@ int main(){
             partie(plateau, J1, J2,1);
         }
     }
+    else{
+        plateau=ini_plateau();
+        J1 = init_joueur (Blanc) ;
+        J2 = init_joueur (Noir) ;
+        duree(J1, J2);
+    
+        partie(plateau, J1, J2, 0);
+    }
+        
     free_plateau(plateau);
     free(J1);
     free(J2);

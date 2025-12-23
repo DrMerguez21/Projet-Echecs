@@ -168,7 +168,7 @@ int mvt_reine (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int
 int petit_roque(int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin){
     if((plateau[xdebut][7]==NULL)||(plateau[xdebut][7]->name!=Tour)||(plateau[xdebut][7]->C!=plateau[xdebut][ydebut]->C)) return 0;
     if((plateau[xdebut][ydebut]->CptMvt!=0)||(plateau[xdebut][7]->CptMvt!=0)) return 0; //roque impossible si le roi ou la tour a déjà bougé
-    if(check(plateau,xdebut, ydebut))return 0; // si le roi est en échec, le roque est impossible
+    if(check(1,plateau,xdebut, ydebut))return 0; // si le roi est en échec, le roque est impossible
     for(int i=ydebut+1; i<=yfin; i++){
         if(case_attaque(plateau, xdebut, i, plateau[xdebut][ydebut]->C)) return 0; // le mouvement n'est pas possible si l'une des cases sur lesquelles passe le roi est attaquée
     }
@@ -178,7 +178,7 @@ int petit_roque(int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, in
 int grand_roque(int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin){
     if((plateau[xdebut][0]==NULL) || (plateau[xdebut][0]->name!=Tour)||(plateau[xdebut][0]->C!=plateau[xdebut][ydebut]->C)) return 0;
     if((plateau[xdebut][ydebut]->CptMvt!=0)||(plateau[xdebut][0]->CptMvt!=0)) return 0; //roque impossible si le roi  ou la tour a déjà bougé
-    if(check(plateau,xdebut, ydebut))return 0; // si le roi est en échec ou que les cases sur lesquelles il va se déplacer sont attaqué, le roque est impossible
+    if(check(1,plateau,xdebut, ydebut))return 0; // si le roi est en échec ou que les cases sur lesquelles il va se déplacer sont attaqué, le roque est impossible
     for(int i=ydebut-1; i>=yfin; i--){
         if(case_attaque(plateau, xdebut, i, plateau[xdebut][ydebut]->C)) return 0; // le mouvement n'est pas possible si l'une des cases sur lesquelles passe le roi est attaquée
     }
@@ -201,11 +201,27 @@ int mvt_roi (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int x
     return (0) ;
 }
 
+int simuler_mouvement(Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin, Couleur couleur){// simule le mouvement et vérifie s'il met son propre roi en échec
+    int mouv_impossible=0;
+    int xroi;
+    int yroi;
+    Piece* temp=plateau[xdebut][ydebut];
+    Piece* temp2=plateau[xfin][yfin];
+    plateau[xfin][yfin]=temp;
+    plateau[xdebut][ydebut]=NULL;
+    if(!trouver_roi(plateau, couleur, &xroi, &yroi)){
+        plateau[xdebut][ydebut]=temp;
+        plateau[xfin][yfin]=temp2;
+        return 1;
+    }
+    if(check(0,plateau, xroi, yroi)) mouv_impossible=1;
+    plateau[xdebut][ydebut]=temp;
+    plateau[xfin][yfin]=temp2;
+    return mouv_impossible;
+}
+
 int mouvement (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin, Couleur couleur) {
-    if(plateau[xdebut][ydebut]->C!=couleur){
-        if(affiche_erreur) printf("La pièce ne vous appartient pas\n");
-        return (0);
-    }if((xdebut==-1)||(ydebut==-1)||(xfin==-1)||(yfin==-1)){
+    if((xdebut==-1)||(ydebut==-1)||(xfin==-1)||(yfin==-1)){
         if(affiche_erreur) printf("L'une des cases sélectionnées ne fait pas partie du plateau\n");
         return (0);
     }if ((xdebut == xfin) && (ydebut == yfin)) {
@@ -214,10 +230,17 @@ int mouvement (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int
     } if (plateau[xdebut][ydebut] == NULL) {
         if(affiche_erreur) printf ("Aucune Pièce Sélectionnée\n") ;
         return (0) ;
+    } if(plateau[xdebut][ydebut]->C!=couleur){
+        if(affiche_erreur) printf("La pièce ne vous appartient pas\n");
+        return (0);
     } if ((plateau[xfin][yfin] != NULL) && (plateau[xfin][yfin] -> C == plateau[xdebut][ydebut] -> C)) {
         if(affiche_erreur) printf ("Case de fin est une pièce appartenant déjà au joueur\n") ;
         return (0) ;
-    } if (plateau[xdebut][ydebut] -> name == Pion) return mvt_pions(affiche_erreur, plateau, xdebut, ydebut, xfin, yfin) ;
+    }if (simuler_mouvement(plateau, xdebut, ydebut, xfin, yfin, couleur)){
+        if(affiche_erreur) printf("le mouvement est impossible car il met votre roi en échec\n");
+        return 0;
+    } 
+    if (plateau[xdebut][ydebut] -> name == Pion) return mvt_pions(affiche_erreur, plateau, xdebut, ydebut, xfin, yfin) ;
     if (plateau[xdebut][ydebut] -> name == Cavalier) return mvt_cava(affiche_erreur, plateau, xdebut, ydebut, xfin, yfin) ;
     if (plateau[xdebut][ydebut] -> name == Tour) return mvt_tour(affiche_erreur, plateau, xdebut, ydebut, xfin, yfin) ;
     if (plateau[xdebut][ydebut] -> name == Fou) return mvt_fou(affiche_erreur, plateau, xdebut, ydebut, xfin, yfin) ;

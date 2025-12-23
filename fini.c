@@ -6,11 +6,12 @@
 #include "fini.h"
 
 int fini (Piece*** plateau, Joueur* J1, Joueur* J2) {
-    if (!trouver_roi(plateau, Noir)) {
+    int xr, yr;
+    if (!trouver_roi(plateau, Noir,&xr, &yr)) {
         printf("Le joueur Bleu a gagné\n");
         return (1) ;
     }
-    if (!trouver_roi(plateau, Blanc)) {
+    if (!trouver_roi(plateau, Blanc, &xr, &yr)) {
         printf("Le joueur Rouge a gagné\n");
         return (1) ;
     }
@@ -25,11 +26,12 @@ int fini (Piece*** plateau, Joueur* J1, Joueur* J2) {
     return (0) ;
 }
 
-int trouver_roi(Piece*** plateau, Couleur couleur){
+int trouver_roi(Piece*** plateau, Couleur couleur, int* xroi, int* yroi){
     for(int i=0; i<8; i++){
         for(int j=0; j<8; j++){
             if((plateau[i][j]!=NULL)&&(plateau[i][j]->name==Roi)&&(plateau[i][j]->C==couleur)){
-                check(plateau,i,j);
+                *xroi=i;
+                *yroi=j;
                 return 1;
             }
         }
@@ -37,13 +39,13 @@ int trouver_roi(Piece*** plateau, Couleur couleur){
     return 0; //le roi n'a pas été trouvé
 }
 
-int check (Piece*** plateau, int xroi, int yroi) {
+int check (int affiche_erreur, Piece*** plateau, int xroi, int yroi) {
     for (int i = 0 ; i < 8 ; i++) {
         for (int j = 0 ; j < 8 ; j++) {
             if ((plateau[i][j] != NULL) && (plateau[i][j] -> C != plateau[xroi][yroi] -> C) && (mouvement(0,plateau, i, j, xroi, yroi, plateau[i][j] -> C) == 1)) {
-                if(plateau[xroi][yroi]==Blanc) printf ("Echec du roi bleu en %d %d", xroi, yroi) ;
+                if((plateau[xroi][yroi]==Blanc)&&affiche_erreur) printf ("Echec du roi bleu en %d %d", xroi, yroi) ;
                 else{
-                    printf ("Echec du roi rouge en %c%d\n", reconvert_y(yroi), reconvert_x(xroi)) ;        
+                    if(affiche_erreur)printf ("Echec du roi rouge en %c%d\n", reconvert_y(yroi), reconvert_x(xroi)) ;        
                 }
                 return 1;
             }
