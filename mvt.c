@@ -209,12 +209,7 @@ int simuler_mouvement(Piece*** plateau, int xdebut, int ydebut, int xfin, int yf
     Piece* temp2=plateau[xfin][yfin];
     plateau[xfin][yfin]=temp;
     plateau[xdebut][ydebut]=NULL;
-    if(!trouver_roi(plateau, couleur, &xroi, &yroi)){
-        plateau[xdebut][ydebut]=temp;
-        plateau[xfin][yfin]=temp2;
-        return 1;
-    }
-    if(check(0,plateau, xroi, yroi)) mouv_impossible=1;
+    if((trouver_roi(plateau, couleur, &xroi, &yroi))&&(check(0,plateau, xroi, yroi))) mouv_impossible=1;
     plateau[xdebut][ydebut]=temp;
     plateau[xfin][yfin]=temp2;
     return mouv_impossible;
