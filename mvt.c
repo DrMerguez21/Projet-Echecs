@@ -194,7 +194,7 @@ int mvt_roi (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int x
     if ((yfin==ydebut-2)&&(xfin==xdebut) && grand_roque(affiche_erreur, plateau, xdebut, ydebut, xdebut, yfin)){
         return (3);
     }
-    if ((abs(xdebut - xfin) <= 1) && abs(ydebut - yfin) <= 1) {
+    if (!case_attaque(plateau, xfin, yfin, plateau[xdebut][ydebut]->C) && abs(xdebut - xfin) <= 1 && abs(ydebut - yfin) <= 1) {
             return (1) ;
     } 
     if(affiche_erreur) printf ("Mouvement Illégal\n") ;
