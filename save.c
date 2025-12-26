@@ -7,11 +7,11 @@
 #include "mvt.h"
 #include "save.h"
 
-void save(const char* nom_fichier, Piece*** plateau, Joueur* J1, Joueur* J2, Couleur actuel){
+int save(const char* nom_fichier, Piece*** plateau, Joueur* J1, Joueur* J2, Couleur actuel){
     FILE *f=fopen(nom_fichier, "w");
     if(f==NULL){
         perror("Erreur de sauvegarde\n");
-        return;
+        return 0;
     }
     fprintf(f, "%d\n", actuel); //sauvegarde du prochain joueur à jouer
 
@@ -30,6 +30,7 @@ void save(const char* nom_fichier, Piece*** plateau, Joueur* J1, Joueur* J2, Cou
     
     fclose(f);
     printf("Sauvegarde réussie\n");
+    return 1;
 }
 
 int reload(const char* nom_fichier, Piece*** plateau, Joueur* J1, Joueur* J2, Couleur* actuel){

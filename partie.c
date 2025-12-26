@@ -26,9 +26,8 @@ int tour_joueur(Piece*** plateau, Joueur* joueur, Joueur* opposant){
             char nom_fichier[50];
             printf("Entrez le nom dans lequel vous voulez faire la sauvegarde\n");
             scanf("%49s", nom_fichier);
-            if(joueur->C==Blanc) save(nom_fichier, plateau, joueur, opposant, Blanc);
-            else{save(nom_fichier, plateau, opposant, joueur, Noir);}
-            return 1;
+            if((joueur->C==Blanc) && (save(nom_fichier, plateau, joueur, opposant, Blanc))) return 1;
+            else{if( save(nom_fichier, plateau, opposant, joueur, Noir)) return 1;}
         }
         xdebut=convert_x(xd);
         ydebut=convert_y(yd);
