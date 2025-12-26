@@ -8,7 +8,6 @@
 #include "save.h"
 
 int main(){
-    //ajouter ici la recharge de sauvegarde
     char recharge;
     Piece*** plateau;
     Joueur* J1;
