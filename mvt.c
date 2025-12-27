@@ -81,33 +81,25 @@ int mvt_cava (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int 
     //Mouvement Tour
 int mvt_tour (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
     int compteur = 0 ;
-    if (xdebut == xfin) {
+    if ((xdebut == xfin) && (abs(yfin - ydebut) >= 2)) {
         if (ydebut < yfin) {
-            if (yfin - ydebut >= 2) {
-                for (int i = ydebut + 1 ; i < yfin ; i++) { //vérif que les cases sont toutes vides entre la tour et la case où elle veut aller
-                    if (plateau[xdebut][i] != NULL) compteur += 1 ;
-                }
-            } 
+            for (int i = ydebut + 1 ; i < yfin ; i++) { //vérif que les cases sont toutes vides entre la tour et la case où elle veut aller
+                if (plateau[xdebut][i] != NULL) compteur += 1 ;
+            }  
         } else {
-            if (ydebut - yfin >= 2) {
-                for (int i = ydebut - 1 ; i > yfin ; i--) {
-                    if (plateau[xdebut][i] != NULL) compteur += 1 ;
-                }
+            for (int i = ydebut - 1 ; i > yfin ; i--) {
+                if (plateau[xdebut][i] != NULL) compteur += 1 ;
             }
         }
-    } else if (ydebut == yfin) {
+    } else if ((ydebut == yfin) && (abs(xfin - xdebut) >= 2)) {
         if (xdebut < xfin) {
-            if (xfin - xdebut >= 2) {
-                for (int i = xdebut + 1 ; i < xfin ; i++) {
-                    if (plateau[i][ydebut] != NULL) compteur += 1 ;
-                }
+            for (int i = xdebut + 1 ; i < xfin ; i++) {
+                if (plateau[i][ydebut] != NULL) compteur += 1 ;
             } 
         } else {
-            if (xdebut - xfin >= 2) {
                 for (int i = xdebut - 1 ; i > xfin ; i--) {
                     if (plateau[i][ydebut] != NULL) compteur += 1 ;
                 }
-            }
         }
     } else {
         if(affiche_erreur) printf ("Mouvement Illégal\n") ;
