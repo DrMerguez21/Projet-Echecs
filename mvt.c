@@ -23,31 +23,17 @@ void deplacement (Joueur* J, Piece*** plateau, int xdebut, int ydebut, int xfin,
     //Mouvement Pions
 int mvt_pions (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
     if ((plateau[xdebut][ydebut] -> C == Blanc) && (xfin == xdebut - 1)) {
-        if (ydebut != yfin) {
-            if ((yfin == ydebut + 1) || (yfin == ydebut - 1)) { //mouv en diago pour manger
-                if ((plateau[xfin][yfin] != NULL) && (plateau[xfin][yfin] -> C == Noir)){
-                    return (1) ;
-                } if (affiche_erreur) printf ("Mouvement Illégal\n") ;
-                return (0) ;
-            } if(affiche_erreur) printf ("Mouvement Illégal\n") ;
-            return (0) ;
-        } if (plateau[xfin][yfin] == NULL) {
+        if ((ydebut== yfin) && plateau[xfin][yfin] == NULL) {
             return (1) ;
-        } if(affiche_erreur) printf ("Mouvement Illégal\n") ;
-        return (0) ;
+        }if (((yfin == ydebut + 1) || (yfin == ydebut - 1))&&(plateau[xfin][yfin] != NULL) && (plateau[xfin][yfin] -> C == Noir)) { //mouv en diago pour manger
+            return (1) ;
+        }
     } if ((plateau[xdebut][ydebut] -> C == Noir) && (xfin == xdebut + 1)) {
-        if (ydebut != yfin) {
-            if ((yfin == ydebut + 1) || (yfin == ydebut - 1)) {
-                if ((plateau[xfin][yfin] != NULL) && (plateau[xfin][yfin] -> C == Blanc)){
-                    return (1) ;
-                } if(affiche_erreur) printf ("Mouvement Illégal\n") ;
-                return (0) ;
-            } if(affiche_erreur) printf ("Mouvement Illégal\n") ;
-            return (0) ;
-        } if (plateau[xfin][yfin] == NULL) {
+        if ((ydebut== yfin) &&(plateau[xfin][yfin] == NULL)) {
             return (1) ;
-        } if(affiche_erreur) printf ("Mouvement Illégal\n") ;
-        return (0) ;
+        }if (((yfin == ydebut + 1) || (yfin == ydebut - 1))&&(plateau[xfin][yfin] != NULL) && (plateau[xfin][yfin] -> C == Blanc)) { //mouv en diago pour manger
+            return (1) ;
+        }
     } if (((plateau[xdebut][ydebut] -> C == Blanc) && (plateau[xdebut][ydebut] -> CptMvt == 0)) && ((xfin == xdebut - 2) && (ydebut == yfin))) {
         if ((plateau[xdebut - 1][ydebut] == NULL) && (plateau[xdebut - 2][ydebut]==NULL)) { //si la case devant le pion est vide
             return (1) ;
