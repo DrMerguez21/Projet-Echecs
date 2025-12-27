@@ -244,3 +244,19 @@ int mouvement (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int
         return mvt_roi(affiche_erreur, plateau, xdebut, ydebut, xfin, yfin) ;
     }
 }
+
+int cherche_move_possible (Piece*** plateau, Couleur couleur) {
+    for (int i = 0 ; i <= 7 ; i++) {
+        for (int j = 0 ; j <= 7 ; j++) {  
+            if ((plateau[i][j] != NULL) && (plateau[i][j] -> C == couleur)) { // on teste toutes les pièces de la couleur du joueur
+                for (int k = 0 ; k <= 7 ; k++) {
+                    for (int l = 0 ; l <= 7 ; l++) { // on fait tous les mouvements possibles (comme un barbare) jusqu'à en trouver 1
+                        if (mouvement(0, plateau, i, j, k, l, couleur)) {
+                            return 1 ;
+                        }                         
+                    }
+                }
+            }
+        }
+    } return 0 ;
+}

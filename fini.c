@@ -7,13 +7,18 @@
 
 int fini (Piece*** plateau, Joueur* J1, Joueur* J2) {
     int xr, yr;
-    if (!trouver_roi(plateau, Noir,&xr, &yr)) {
-        printf("Le joueur Bleu a gagné\n");
-        return (1) ;
-    }
-    if (!trouver_roi(plateau, Blanc, &xr, &yr)) {
-        printf("Le joueur Rouge a gagné\n");
-        return (1) ;
+     ;
+    if (trouver_roi(plateau, J2 -> C, &xr, &yr) && !cherche_move_possible(plateau, Noir)) {
+        if (check(0, plateau, xr, yr) == 1) printf("Le joueur Bleu a gagné\n");
+        else {
+            printf ("Pat, Aucun Coup Possible\n") ;
+        } return (1) ;
+    }  ;
+    if (trouver_roi(plateau, J1 -> C, &xr, &yr) && !cherche_move_possible(plateau, Blanc)) {
+        if (check(0, plateau, xr, yr) == 1) printf("Le joueur Rouge a gagné\n");
+        else {
+            printf ("Pat, Aucun Coup Possible\n ") ;
+        } return (1) ;
     }
     if(J1 ->temps <= 0){
         printf("Le joueur Bleu a perdu au temps\n");

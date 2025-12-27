@@ -25,5 +25,6 @@ int simuler_mouvement(Piece*** plateau, int xdebut, int ydebut, int xfin, int yf
 
 int mouvement (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin, Couleur couleur);
 
+int cherche_move_possible (Piece*** plateau, Couleur couleur);
 
 #endif
