@@ -91,6 +91,19 @@ Piece*** ini_plateau_vide(){
     return plateau;
 }
 
+Piece*** ini_plateau_pat(){
+    Piece*** plateau=ini_plateau_vide();
+    for(int i=0; i<8; i++){
+        for(int j=0; j<8; j++){
+            plateau[i][j]=NULL;
+        }
+    }
+    plateau[2][6]=ini_reine(Blanc);
+    plateau[2][5]=ini_roi(Blanc);
+    plateau[0][7]=ini_roi(Noir);
+    return plateau;
+}
+
 Piece*** ini_plateau(){
     Piece*** plateau=ini_plateau_vide();
     plateau[0][0]=ini_tour(Noir);// pièces noires

@@ -65,4 +65,6 @@ void duree(Joueur* J1, Joueur* J2);
 
 void promotion(Piece*** plateau, int xpion, int ypion, Joueur* opposant);
 
+Piece*** ini_plateau_pat();
+
 #endif
