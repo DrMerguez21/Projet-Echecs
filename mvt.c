@@ -99,38 +99,29 @@ int mvt_tour (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int 
     //Mouvement Fou
 int mvt_fou (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
     int compteur = 0 ;
-    if (xdebut - xfin == ydebut - yfin) {
+    if ((xdebut - xfin == ydebut - yfin) && abs(xfin-xdebut) >=1) {
         if (xdebut < xfin) {
-            if (xfin - xdebut >= 2) {
-                for (int i = 1 ; i < xfin - xdebut ; i++) {
-                    if (plateau[xdebut + i][ydebut + i] != NULL) compteur += 1 ;
-                }
+            for (int i = 1 ; i < xfin - xdebut ; i++) {
+                if (plateau[xdebut + i][ydebut + i] != NULL) compteur += 1 ;
             }
         } else {
-            if (xdebut - xfin >= 2) {
-                for (int i = 1 ; i < xdebut - xfin ; i++) {
-                    if (plateau[xdebut - i][ydebut - i] != NULL) compteur += 1 ;
-                    
-                }
+            for (int i = 1 ; i < xdebut - xfin ; i++) {
+                if (plateau[xdebut - i][ydebut - i] != NULL) compteur += 1 ;        
             }
         }
-    } else if (xdebut - xfin == -1 * (ydebut - yfin)) {
+    } else if ((xdebut - xfin == -1 * (ydebut - yfin))&& abs(xfin -xdebut)>=1) {
         if (xdebut < xfin) {
-            if (xfin - xdebut >= 2) {
-                for (int i = 1 ; i < xfin - xdebut ; i++) {
-                    if (plateau[xdebut + i][ydebut - i] != NULL) compteur += 1 ;
-                }
+            for (int i = 1 ; i < xfin - xdebut ; i++) {
+                if (plateau[xdebut + i][ydebut - i] != NULL) compteur += 1 ;
             }
         } else {
-            if (xdebut - xfin >= 2) {
-                for (int i = 1 ; i < xdebut - xfin ; i++) {
-                    if (plateau[xdebut - i][ydebut + i] != NULL) compteur += 1 ;
-                }
+            for (int i = 1 ; i < xdebut - xfin ; i++) {
+                if (plateau[xdebut - i][ydebut + i] != NULL) compteur += 1 ;
             }
         }
     } else {
         if(affiche_erreur) printf ("Mouvement Illégal\n") ;
-        return (0); ;
+        return (0);
     } if (compteur == 0) {
         return (1) ;
     } if(affiche_erreur) printf ("Une pièce bloque le chemin\n") ;
