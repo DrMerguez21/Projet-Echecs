@@ -77,6 +77,7 @@ int mvt_cava (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int 
     } if(affiche_erreur) printf ("Mouvement Illégal\n") ;
     return (0) ;
 }
+
     //Mouvement Tour
 int mvt_tour (int affiche_erreur, Piece*** plateau, int xdebut, int ydebut, int xfin, int yfin) {
     int compteur = 0 ;
