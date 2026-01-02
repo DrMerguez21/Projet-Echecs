@@ -18,3 +18,23 @@ mouv.c
 Structures.h
 Structures.c
 test
+test2
+
+#fichiers du automake
+missing
+Makefile.in
+install-sh
+INSTALL
+depcomp
+COPYING
+configure~
+configure.ac~
+configure
+config.sub
+config.status
+config.log
+config.guess
+compile
+aclocal.m4
+autom4te.cache
+.deps
