@@ -246,19 +246,20 @@ void duree(Joueur* J1, Joueur* J2){
     printf("Si vous voulez faire une partie rapide de 20 min chacun, entrez r.\n");
     printf("Si vous voulez faire une partie longue chacun, entrez l.\n");
     printf("Sinon, ce sera une partie rapide\n");
-    scanf(" %c", &longueur);
-    if(longueur =='b'){
-        J1->temps=(5*60);
-        J2->temps=(5*60);
-        return;
+    if(scanf(" %c", &longueur)){
+        if(longueur =='b'){
+            J1->temps=(5*60);
+            J2->temps=(5*60);
+            return;
+        }
+        if(longueur =='l'){
+            J1->temps=(60*60);
+            J2->temps=(60*60);
+            return;
+        }
+        J1->temps=(20*60);
+        J2->temps=(20*60);
     }
-    if(longueur =='l'){
-        J1->temps=(60*60);
-        J2->temps=(60*60);
-        return;
-    }
-    J1->temps=(20*60);
-    J2->temps=(20*60);
 }
 
 void promotion(Piece*** plateau, int xpion, int ypion, Joueur* opposant){
@@ -268,26 +269,28 @@ void promotion(Piece*** plateau, int xpion, int ypion, Joueur* opposant){
         if((plateau[xpion][ypion]->C==Blanc)&&(xpion==0)){ //un pion blanc a traversé le plateau
             printf("le pion en %c%d peut être promu. Entrez r pour le convertir en reine, f pour le convertir en fou, t pour en tour et c pour en cavalier.\n", reconvert_y(ypion), reconvert_x(xpion));
             printf("Sinon la pièce sera automatiquement convertie en reine\n");
-            scanf(" %c", &promo);
-            free(plateau[xpion][ypion]);
-            if(promo == 'f') plateau[xpion][ypion]=ini_fou(Blanc);
-            else if(promo=='t') plateau[xpion][ypion]=ini_tour(Blanc);
-            else if(promo=='c') plateau[xpion][ypion]=ini_cavalier(Blanc);
-            else plateau[xpion][ypion]=ini_reine(Blanc);
-            plateau[xpion][ypion]->CptMvt=temp;
-            opposant->Points -= (plateau[xpion][ypion]->Point -1); //on prend en compte la promotion dans le décompte des points
+            if(scanf(" %c", &promo)){
+                free(plateau[xpion][ypion]);
+                if(promo == 'f') plateau[xpion][ypion]=ini_fou(Blanc);
+                else if(promo=='t') plateau[xpion][ypion]=ini_tour(Blanc);
+                else if(promo=='c') plateau[xpion][ypion]=ini_cavalier(Blanc);
+                else plateau[xpion][ypion]=ini_reine(Blanc);
+                plateau[xpion][ypion]->CptMvt=temp;
+                opposant->Points -= (plateau[xpion][ypion]->Point -1); //on prend en compte la promotion dans le décompte des points
+            }
         }
         if((plateau[xpion][ypion]->C==Noir)&&(xpion==7)){ //un pion blanc a traversé le plateau
             printf("le pion en %c%d peut être promu. Entrez r pour le convertir en reine, f pour le convertir en fou, t pour en tour et c pour en cavalier.\n", reconvert_y(ypion), reconvert_x(xpion));
             printf("Sinon la pièce sera automatiquement convertie en reine\n");
-            scanf(" %c", &promo);
-            free(plateau[xpion][ypion]);
-            if(promo == 'f') plateau[xpion][ypion]=ini_fou(Noir);
-            else if(promo=='t') plateau[xpion][ypion]=ini_tour(Noir);
-            else if(promo=='c') plateau[xpion][ypion]=ini_cavalier(Noir);
-            else plateau[xpion][ypion]=ini_reine(Noir);
-            plateau[xpion][ypion]->CptMvt=temp;
-            opposant->Points -= (plateau[xpion][ypion]->Point -1);
+            if(scanf(" %c", &promo)){
+                free(plateau[xpion][ypion]);
+                if(promo == 'f') plateau[xpion][ypion]=ini_fou(Noir);
+                else if(promo=='t') plateau[xpion][ypion]=ini_tour(Noir);
+                else if(promo=='c') plateau[xpion][ypion]=ini_cavalier(Noir);
+                else plateau[xpion][ypion]=ini_reine(Noir);
+                plateau[xpion][ypion]->CptMvt=temp;
+                opposant->Points -= (plateau[xpion][ypion]->Point -1);
+            }    
         }
     }
 }

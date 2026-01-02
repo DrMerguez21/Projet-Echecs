@@ -40,29 +40,27 @@ int reload(const char* nom_fichier, Piece*** plateau, Joueur* J1, Joueur* J2, Co
         return 0;
     }
     int tmp;
-    fscanf(f, "%d", &tmp);
-    *actuel=(Couleur)tmp; //récupération de la couleur du joueur courant
-    fscanf(f, "%d %d %d", &tmp, &J1->Points, &J1->temps);
-    J1->C=(Couleur)tmp;
-    fscanf(f, "%d %d %d", &tmp, &J2->Points, &J2->temps);
-    J2->C=(Couleur)tmp;
+    if(fscanf(f, "%d", &tmp)) *actuel=(Couleur)tmp; //récupération de la couleur du joueur courant
+    if(fscanf(f, "%d %d %d", &tmp, &J1->Points, &J1->temps))J1->C=(Couleur)tmp;
+    if(fscanf(f, "%d %d %d", &tmp, &J2->Points, &J2->temps))J2->C=(Couleur)tmp;
 
     for(int i=0; i<8; i++){
         for(int j=0; j<8; j++){
             int name, C, Point, CptMvt;
             char symbole[5];
-            fscanf(f,"%d %d %d %d %4s", &name, &C, &Point, &CptMvt, symbole);
+            if(fscanf(f,"%d %d %d %d %4s", &name, &C, &Point, &CptMvt, symbole)){
 
-            if(name == -1){
-                plateau[i][j]=NULL;
-            } 
-            else{
-                plateau[i][j] = malloc(sizeof(Piece));
-                plateau[i][j]->name=(NomPiece)name;
-                plateau[i][j]->C =C;
-                plateau[i][j]->Point=Point;
-                plateau[i][j]->CptMvt=CptMvt;
-                strcpy(plateau[i][j]->Symbole, symbole);
+                if(name == -1){
+                    plateau[i][j]=NULL;
+                } 
+                else{
+                    plateau[i][j] = malloc(sizeof(Piece));
+                    plateau[i][j]->name=(NomPiece)name;
+                    plateau[i][j]->C =C;
+                    plateau[i][j]->Point=Point;
+                    plateau[i][j]->CptMvt=CptMvt;
+                    strcpy(plateau[i][j]->Symbole, symbole);
+                }
             }
         }
     }
