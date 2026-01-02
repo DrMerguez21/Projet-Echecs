@@ -21,13 +21,14 @@ int tour_joueur(Piece*** plateau, Joueur* joueur, Joueur* opposant){
     time(&start); //debut du décompte pour le joueur blanc
     do{
         printf("Entrez les coordonnées de la pièce que vous voulez déplacer, puis celles de la case où vous voulez aller, séparées par un espace\n");
-        scanf(" %c %d %c %d",&yd, &xd, &yf, &xf);
-        if((yd=='z')&&(xd==9)&&(yf=='z')&&(xf==9)){
+        if((scanf(" %c %d %c %d",&yd, &xd, &yf, &xf))&&(yd=='z')&&(xd==9)&&(yf=='z')&&(xf==9)){
             char nom_fichier[50];
             printf("Entrez le nom dans lequel vous voulez faire la sauvegarde\n");
-            scanf("%49s", nom_fichier);
+            if(scanf("%49s", nom_fichier)){
             if((joueur->C==Blanc) && (save(nom_fichier, plateau, joueur, opposant, Blanc))) return 1;
             else{if( save(nom_fichier, plateau, opposant, joueur, Noir)) return 1;}
+            }
+
         }
         xdebut=convert_x(xd);
         ydebut=convert_y(yd);
